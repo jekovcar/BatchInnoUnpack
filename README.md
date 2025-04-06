@@ -7,5 +7,5 @@ Run BatchUnpack.bat next to the InnoSetup files.
 <br>2. Issfix_iconextr.exe (https://www.autoitscript.com) adds an installer icon, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
 <br> In Languages(Optional): .isl files from the releases at https://files.jrsoftware.org/is/6/
 # Reference
-<p2>[https://github.com/liuyug/mdict-utils<br>](https://github.com/jrathlev/InnoUnpacker-Windows-GUI/tree/master/innounp-2)
+<p2>https://github.com/jrathlev/InnoUnpacker-Windows-GUI/tree/master/innounp-2
 https://github.com/jrathlev/InnoUnpacker-Windows-GUI
