@@ -8,4 +8,4 @@ Run BatchUnpack.bat next to the InnoSetup files.
 <br> In Languages(Optional): .isl files from the releases at https://files.jrsoftware.org/is/6/
 # Reference
 <p2>https://github.com/jrathlev/InnoUnpacker-Windows-GUI/tree/master/innounp-2
-https://github.com/jrathlev/InnoUnpacker-Windows-GUI
+<br>https://github.com/jrathlev/InnoUnpacker-Windows-GUI
