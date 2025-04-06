@@ -1,5 +1,4 @@
 # Use BatchInnoUnpack
-Inno Setup Files Batch Unpacker, Extracts its Setup Icon.ico, Fixed Script.iss
 BatchInnoUnpack unpacks each installer into a folder with the _unpacked suffix.
 Run BatchUnpack.bat next to the InnoSetup files.
 <br>In utils must be:
