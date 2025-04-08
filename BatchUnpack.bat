@@ -21,9 +21,14 @@ exit
 @echo === EXE files not exist ===
 @echo.
 pause
+exit
 
 :message2 
 @echo. 
 @echo === innounp.exe miss in utils ===
 @echo.
+@echo Download https://www.rathlev-home.de/tools/download/innounp-2.zip
+@echo and unpack innounp.exe to /utils
+@echo.
 pause
+exit
