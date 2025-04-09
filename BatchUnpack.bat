@@ -27,8 +27,15 @@ exit
 @echo. 
 @echo === innounp.exe miss in utils ===
 @echo.
-@echo Download https://www.rathlev-home.de/tools/download/innounp-2.zip
-@echo and unpack innounp.exe to /utils
+@echo Please wait for download https://www.rathlev-home.de/tools/download/innounp-2.zip
+@echo and unpack it to /utils
+powershell -command "Start-BitsTransfer -Source https://www.rathlev-home.de/tools/download/innounp-2.zip -Destination innounp-2.zip"
+powershell -command "Expand-Archive innounp-2.zip utils -Force"
+@echo.
+@echo Downloaded and unpacked "innounp-2.zip" in utils
+DEL innounp-2.zip /S /Q
+@echo.
+@echo. --- Now innounp.exe exist in utils, please Run again. ---
 @echo.
 pause
 exit
