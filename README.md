@@ -1,6 +1,7 @@
 # Use BatchInnoUnpack
 BatchInnoUnpack unpacks each installer into a folder with the _unpacked suffix.
 <br>Run BatchUnpack.bat(BatchUnpack_with_Log.bat) next to the InnoSetup files.
+<br>The script will automatically download innounp.exe and install it in utils.
 <br>In utils must be:
 <br>1. innounp.exe(can be download/update from https://www.rathlev-home.de/tools/download/innounp-2.zip), console unpacker
 <br>2. Issfix_iconextr.exe (https://www.autoitscript.com) adds an installer icon, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
