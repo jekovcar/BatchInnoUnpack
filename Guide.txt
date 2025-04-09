@@ -1,0 +1,23 @@
+Ru=====================================================================================================================
+BatchInnoUnpack распаковывает каждый установщик в папку с суффиксом _unpacked.
+Запускать BatchUnpack.bat(BatchUnpack_with_Log.bat) рядом с InnoSetup файлами.
+Скрипт втоматически скачает innounp.exe и установит его в utils.
+На случай запароленного установщика(пустой _unpack, Unpack_Log: Type in a password (empty string to quit)), 
+рекомендуется использовать BatchUnpack.bat, где откроется диалог введения пароля.
+CheckUpdate.bat проверит версию инсталлированного innounp.exe и при необходимости скачает и инсталирует обновление.
+В utils должы быть: 
+1.innounp.exe(download https://www.rathlev-home.de/tools/download/innounp-2.zip), консольный распаковчик
+2.Issfix_iconextr.exe(Issfix_iconextr.au3 thttps://www.autoitscript.com) добавляет иконку установщика, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
+En=====================================================================================================================
+BatchInnoUnpack unpacks each installer into a folder with the _unpacked suffix.
+Run BatchUnpack.bat(BatchUnpack_with_Log.bat) next to the InnoSetup files.
+The script will automatically download innounp.exe and install it in utils.
+In case of password protected installer (empty _unpack, Unpack_Log: Enter password (empty line to exit)),
+it is recommended to use BatchUnpack.bat, where a password entry dialog box will open.
+CheckUpdate.bat will check the version of the installed innounp.exe and, if necessary, download and install the update
+In utils must be:
+1.innounp.exe(download https://www.rathlev-home.de/tools/download/innounp-2.zip), console unpacker
+2.Issfix_iconextr.exe(Issfix_iconextr.au3 thttps://www.autoitscript.com) adds an installer icon, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
+
+Releases on:
+https://github.com/jekovcar/BatchInnoUnpack
