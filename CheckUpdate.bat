@@ -54,12 +54,13 @@ DEL innounp-2.zip /S /Q
 @echo.
 pause
 exit
-EXIT
 
 :message2 
 @echo. 
 @echo === innounp.exe miss in utils ===
 @echo.
+@echo.For download and install
+pause
 @echo Please wait for download https://www.rathlev-home.de/tools/download/innounp-2.zip
 @echo and unpack it to /utils
 powershell -command "Start-BitsTransfer -Source https://www.rathlev-home.de/tools/download/innounp-2.zip -Destination innounp-2.zip"
@@ -68,7 +69,7 @@ powershell -command "Expand-Archive innounp-2.zip utils -Force"
 @echo Downloaded and unpacked "innounp-2.zip" in utils
 DEL innounp-2.zip /S /Q
 @echo.
-@echo. --- Now innounp.exe exist in utils, to check the Version Run again. ---
+@echo. --- Now innounp.exe exist in utils, please Run again. ---
 @echo.
 pause
 exit
