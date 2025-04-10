@@ -20,6 +20,9 @@ exit
 @echo. 
 @echo === EXE files not exist ===
 @echo.
+@echo.Put installer in the current directory and Run again.
+ECHO Now It will close!
+@echo.
 pause
 exit
 
@@ -27,6 +30,8 @@ exit
 @echo. 
 @echo === innounp.exe miss in utils ===
 @echo.
+@echo.For download and install
+pause
 @echo Please wait for download https://www.rathlev-home.de/tools/download/innounp-2.zip
 @echo and unpack it to /utils
 powershell -command "Start-BitsTransfer -Source https://www.rathlev-home.de/tools/download/innounp-2.zip -Destination innounp-2.zip"
