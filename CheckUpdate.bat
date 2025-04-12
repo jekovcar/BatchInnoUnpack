@@ -1,4 +1,9 @@
 @Echo Off
+@echo.Installed InnoIssFixIconExtract :
+powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/Issfix_iconextr.exe').VersionInfo.FileVersion"
+@echo.
+
+@Echo Off
 if not exist "%~dp0utils/innounp.exe" goto :message2
 @echo.Installed InnoUnpacker version :
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe').VersionInfo.FileVersion"
