@@ -1,6 +1,7 @@
 # Use BatchInnoUnpack
 BatchInnoUnpack unpacks each installer into a folder with the _unpacked suffix.
 <br>If the EXE files are not Inno Setup, then their icon will simply be unpacked as "Setup Icon.ico"
+<br>The Languages ​​folder can be deleted to extract the embedded isl installer's names.
 <br>Run BatchUnpack.bat(BatchUnpack_with_Log.bat) next to the InnoSetup files.
 <br>The script will automatically download innounp.exe and install it in utils.
 <br>In utils must be:
