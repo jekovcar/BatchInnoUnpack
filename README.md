@@ -6,7 +6,7 @@ BatchInnoUnpack unpacks each installer into a folder with the _unpacked suffix.
 <br>In utils must be:
 <br>1. innounp.exe(can be download/update from https://www.rathlev-home.de/tools/download/innounp-2.zip), console unpacker
 <br>2. Issfix_iconextr.exe (https://www.autoitscript.com) adds an installer icon, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
-<br> In Languages(Optional): .isl files from the releases at https://files.jrsoftware.org/is/6/. It can be deleted to extract the embedded isl installer's names.
+<br> In Languages(Optional): .isl files from the releases at https://files.jrsoftware.org/is/6/. It can be deleted to extract the embedded installer's isl.
 # Reference
 <p2>https://github.com/jrathlev/InnoUnpacker-Windows-GUI/tree/master/innounp-2
 <br>https://www.rathlev-home.de/tools/prog-e.html#unpack
