@@ -1,5 +1,5 @@
 Ru=====================================================================================================================
-BatchInnoUnpack распаковывает каждый установщик(без пробелов в файловом пути) в папку с суффиксом _unpacked.
+BatchInnoUnpack распаковывает каждый установщик в папку с суффиксом _unpacked.
 Запускать BatchUnpack.bat(BatchUnpack_with_Log.bat) рядом с InnoSetup файлами.
 Скрипт втоматически скачает innounp.exe и установит его в utils.
 На случай запароленного установщика(пустой _unpack, Unpack_Log: Type in a password (empty string to quit)), 
@@ -9,7 +9,7 @@ CheckUpdate.bat проверит версию инсталлированного
 1.innounp.exe(download https://www.rathlev-home.de/tools/download/innounp-2.zip), консольный распаковчик
 2.Issfix_iconextr.exe(Issfix_iconextr.au3 thttps://www.autoitscript.com) добавляет иконку установщика, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
 En=====================================================================================================================
-BatchInnoUnpack unpacks each installer(no spaces in file path) into a folder with the _unpacked suffix.
+BatchInnoUnpack unpacks each installer into a folder with the _unpacked suffix.
 Run BatchUnpack.bat(BatchUnpack_with_Log.bat) next to the InnoSetup files.
 The script will automatically download innounp.exe and install it in utils.
 In case of password protected installer (empty _unpack, Unpack_Log: Enter password (empty line to exit)),
