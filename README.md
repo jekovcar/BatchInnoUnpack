@@ -1,5 +1,5 @@
 # Use BatchInnoUnpack
-BatchInnoUnpack unpacks each installer(<b> ! <i>no spaces in file path</i> ! </b>) into a folder with the _unpacked suffix.
+BatchInnoUnpack unpacks each installer into a folder with the _unpacked suffix.
 <br>Run BatchUnpack.bat(BatchUnpack_with_Log.bat) next to the InnoSetup files.
 <br>The script will automatically download innounp.exe and install it in utils.
 <br>In utils must be:
