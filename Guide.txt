@@ -1,6 +1,7 @@
 Ru=====================================================================================================================
 BatchInnoUnpack распаковывает каждый установщик в папку с суффиксом _unpacked.
 Если EXE-файлы не являются Inno Setup, то их значок будет просто распакован как "SetupIcon.ico"
+Папка Languages опционально можно убрать, для извлечения встроенных имен isl инсталлера.
 Запускать BatchUnpack.bat(BatchUnpack_with_Log.bat) рядом с InnoSetup файлами.
 Скрипт втоматически скачает innounp.exe и установит его в utils.
 На случай запароленного установщика(пустой _unpack, Unpack_Log: Type in a password (empty string to quit)), 
@@ -12,6 +13,7 @@ CheckUpdate.bat проверит версию инсталлированного
 En=====================================================================================================================
 BatchInnoUnpack unpacks each installer into a folder with the _unpacked suffix.
 If the EXE files are not Inno Setup, then their icon will simply be unpacked as "Setup Icon.ico"
+The Languages ​​folder can be deleted to extract the embedded isl installer's names.
 Run BatchUnpack.bat(BatchUnpack_with_Log.bat) next to the InnoSetup files.
 The script will automatically download innounp.exe and install it in utils.
 In case of password protected installer (empty _unpack, Unpack_Log: Enter password (empty line to exit)),
