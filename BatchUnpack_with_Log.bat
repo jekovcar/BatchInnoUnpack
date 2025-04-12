@@ -6,7 +6,7 @@ if not exist "%~dp0*.exe" goto :message
 @echo.
 @echo --- Unpacking EXE files with Log ---
 @echo. 
-BatchUnpack.bat >%~dp0Unpack_Log.txt
+BatchUnpack.bat >"%~dp0Unpack_Log.txt"
 exit
 
 :message 
