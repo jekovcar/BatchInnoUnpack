@@ -1,7 +1,8 @@
 Ru=====================================================================================================================
 BatchInnoUnpack распаковывает каждый установщик в папку с суффиксом _unpacked.
 Если EXE-файлы не являются Inno Setup, то их значок будет просто распакован как "SetupIcon.ico"
-Папка Languages опционально можно убрать, для извлечения встроенных имен isl инсталлера.
+Опционально: Папку Languages можно убрать, для извлечения встроенных имен isl инсталлера.
+Опционально: Можно скачать ROPS disassembler для "CodeSection.txt" и установить в \utils    
 Запускать BatchUnpack.bat(BatchUnpack_with_Log.bat) рядом с InnoSetup файлами.
 Скрипт втоматически скачает innounp.exe и установит его в utils.
 На случай запароленного установщика(пустой _unpack, Unpack_Log: Type in a password (empty string to quit)), 
@@ -10,10 +11,12 @@ CheckUpdate.bat проверит версию инсталлированного
 В utils должы быть: 
 1.innounp.exe(download https://www.rathlev-home.de/tools/download/innounp-2.zip), консольный распаковчик
 2.Issfix_iconextr.exe(Issfix_iconextr.au3 thttps://www.autoitscript.com) добавляет иконку установщика, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
+3.disasm.exe(https://master.dl.sourceforge.net/project/innounp/other stuff/ROPS Disassembler/rops-3.0.53.935-disasm.rar)
 En=====================================================================================================================
 BatchInnoUnpack unpacks each installer into a folder with the _unpacked suffix.
 If the EXE files are not Inno Setup, then their icon will simply be unpacked as "Setup Icon.ico"
-The Languages ​​folder can be deleted to extract the embedded isl installer's names.
+Optional: The Languages ​​folder can be removed to extract the built-in names of the isl installer.
+Optional: You can download the ROPS disassembler for "CodeSection.txt" and install it in \utils
 Run BatchUnpack.bat(BatchUnpack_with_Log.bat) next to the InnoSetup files.
 The script will automatically download innounp.exe and install it in utils.
 In case of password protected installer (empty _unpack, Unpack_Log: Enter password (empty line to exit)),
@@ -22,6 +25,7 @@ CheckUpdate.bat will check the version of the installed innounp.exe and, if nece
 In utils must be:
 1.innounp.exe(download https://www.rathlev-home.de/tools/download/innounp-2.zip), console unpacker
 2.Issfix_iconextr.exe(Issfix_iconextr.au3 thttps://www.autoitscript.com) adds an installer icon, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
+3.disasm.exe(https://master.dl.sourceforge.net/project/innounp/other stuff/ROPS Disassembler/rops-3.0.53.935-disasm.rar)
 
 Releases on:
 https://github.com/jekovcar/BatchInnoUnpack
