@@ -6,7 +6,7 @@ if not exist "%~dp0*.exe" goto :message
 for %%f in (*.exe) do (
 IF EXIST "%~dp0%%f_unpacked" rmdir /S /Q "%~dp0%%f_unpacked"
  "%~dp0utils/innounp.exe" -x -m -a -"d%~dp0/%%f_unpack" "%~dp0\%%~nxf"
-IF EXIST "%~dp0utils/disasm.exe" "%~dp0utils/disasm.exe" "%~dp0%%f_unpack\embedded\CompiledCode.bin" "%~dp0%%f_unpack\CodeSection.txt"
+IF EXIST "%~dp0%%f_unpack\embedded\CompiledCode.bin" "%~dp0utils/disasm.exe" "%~dp0%%f_unpack\embedded\CompiledCode.bin" "%~dp0%%f_unpack\CodeSection.txt"
 move "%~dp0%%f_unpack\install_script.iss" "%~dp0"
 move "%~dp0utils\Issfix_iconextr.exe" "%~dp0"
  "%~dp0Issfix_iconextr.exe"
