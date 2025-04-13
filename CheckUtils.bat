@@ -92,7 +92,7 @@ exit
 @echo.
 @echo.For download ROPS Disassembler and unpack it to /utils Go to:
 @echo.
-@echo.https://master.dl.sourceforge.net/project/innounp/other stuff/ROPS Disassembler/rops-3.0.53.935-disasm.rar
+@echo.https://sourceforge.net/projects/innounp/files/other%20stuff/ROPS%20Disassembler/rops-3.0.53.935-disasm.rar
 @echo.
 pause
 @echo.
