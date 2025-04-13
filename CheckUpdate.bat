@@ -7,9 +7,16 @@ powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/Issfix_icone
 if not exist "%~dp0utils/innounp.exe" goto :message2
 @echo.Installed InnoUnpacker version :
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe').VersionInfo.FileVersion"
+@echo.
+
+@Echo Off
+if not exist "%~dp0utils/disasm.exe" goto :message3
+@echo.Installed ROPS disassembler
+powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/disasm.exe').VersionInfo.FileVersion"
 @echo. 
 
 :start
+@echo.
 @echo.Check the latest "Unicode version of the console application Inno Setup Unpacker" online?
 SET choice=
 SET /p choice=Pls, enter Y[N]: 
@@ -78,3 +85,17 @@ DEL innounp-2.zip /S /Q
 @echo.
 pause
 exit
+
+:message3 
+@echo. 
+@echo === disasm.exe miss in utils === ROPS disassembler writes "CodeSection.txt"
+@echo.
+@echo.For download ROPS Disassembler and unpack it to /utils Go to:
+@echo.
+@echo.https://master.dl.sourceforge.net/project/innounp/other stuff/ROPS Disassembler/rops-3.0.53.935-disasm.rar
+@echo.
+pause
+@echo.
+@echo. --- Check the latest InnoUnpacker ---
+@echo.
+goto :start
