@@ -7,7 +7,7 @@ BatchInnoUnpack распаковывает каждый установщик в 
 Скрипт втоматически скачает innounp.exe и установит его в utils.
 На случай запароленного установщика(пустой _unpack, Unpack_Log: Type in a password (empty string to quit)), 
 рекомендуется использовать BatchUnpack.bat, где откроется диалог введения пароля.
-Check Utils.bat проверить наличие инсталлированных утилит, при необходимости скачет и инсталирует обновление.
+Check Utils.bat проверить наличие инсталлированных утилит, при необходимости скачает и инсталирует обновление.
 В utils должы быть: 
 1.innounp.exe(download https://www.rathlev-home.de/tools/download/innounp-2.zip), консольный распаковчик
 2.Issfix_iconextr.exe(Issfix_iconextr.au3 thttps://www.autoitscript.com) добавляет иконку установщика, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
