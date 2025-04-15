@@ -1,4 +1,6 @@
 @Echo Off
+@echo.                                        https://github.com/jekovcar/BatchInnoUnpack
+@echo.
 @echo.Installed InnoIssFixIconExtract :
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/Issfix_iconextr.exe').VersionInfo.FileVersion"
 @echo.
