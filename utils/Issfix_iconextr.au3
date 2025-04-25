@@ -13,7 +13,7 @@
 #include <Array.au3>
 #include <WinAPIFiles.au3>
 
-Local $sFind = "iÂ»?;"
+Local $sFind = "i»?;"
 Local $sReplace = ";"
 Local $sFind2 = "[Setup]"
 Local $sReplace2 = "[Setup]"& @CRLF &"SolidCompression=yes"& @CRLF & _
@@ -46,7 +46,7 @@ Local $sFileISS = FileRead($sFileName)
 If StringInStr($sFileISS, "[Registry]")=0 Then
 	FileDelete($sFileReg)
 Else
-	local $aExtractReg = _StringBetween($sFileISS, "[Registry]", "[Run]")
+	local $aExtractReg = _StringBetween($sFileISS, "[Registry]", "[")
     FileOpen($sFileReg, 2)
 
 	FileWrite($sFileReg, $aExtractReg[0])
@@ -57,10 +57,9 @@ EndIf
 If StringInStr($sFileISS, "[INI]")=0 Then
 	FileDelete($sFileINI)
 Else
-	local $aExtractINI = _StringBetween($sFileISS, "[INI]", "[Run]")
+	local $aExtractINI = _StringBetween($sFileISS, "[INI]", "[")
 	FileOpen($sFileINI, 2)
 
 	FileWrite($sFileINI, $aExtractINI[0])
 	FileClose($sFileINI)
 EndIf
-
