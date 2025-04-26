@@ -1,10 +1,11 @@
 @Echo Off
-@echo.                                        https://github.com/jekovcar/BatchInnoUnpack
+:check
+@echo.
+@echo.                                 [  https://github.com/jekovcar/BatchInnoUnpack  ]
 @echo.
 @echo.Installed InnoIssFixIconExtract :
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/Issfix_iconextr.exe').VersionInfo.FileVersion"
 @echo.
-
 @Echo Off
 if not exist "%~dp0utils/innounp.exe" goto :message2
 @echo.Installed InnoUnpacker version :
@@ -65,9 +66,9 @@ powershell -command "Expand-Archive innounp-2.zip utils -Force"
 DEL innounp-2.zip /S /Q
 @echo.
 @echo. --- Now innounp.exe is updated ---
-@echo.
+@echo.--- Close to Exit [ OR ] ---^>^>
 pause
-exit
+goto :check
 
 :message2 
 @echo. 
@@ -83,10 +84,10 @@ powershell -command "Expand-Archive innounp-2.zip utils -Force"
 @echo Downloaded and unpacked "innounp-2.zip" in utils
 DEL innounp-2.zip /S /Q
 @echo.
-@echo. --- Now innounp.exe exist in utils, please Run again. ---
-@echo.
+@echo.--- Now innounp.exe exist in utils ---
+@echo.--- Close to Exit [ OR ] ---^>^>
 pause
-exit
+goto :check
 
 :message3 
 @echo. 
