@@ -1,10 +1,12 @@
 @Echo Off
 
+:check
 if not exist "%~dp0utils/innounp.exe" goto :message2
 if not exist "%~dp0*.exe" goto :message
+if not exist "%~dp0\Output" mkdir "%~dp0\Output"
 
 for %%f in (*.exe) do (
-IF EXIST "%~dp0%%f_unpacked" rmdir /S /Q "%~dp0%%f_unpacked"
+IF EXIST "%~dp0\Output\%%f_unpacked" rmdir /S /Q "%~dp0\Output\%%f_unpacked"
  "%~dp0utils/innounp.exe" -x -m -a -"d%~dp0/%%f_unpack" "%~dp0\%%~nxf"
 IF EXIST "%~dp0%%f_unpack\embedded\CompiledCode.bin" "%~dp0utils/disasm.exe" "%~dp0%%f_unpack\embedded\CompiledCode.bin" "%~dp0%%f_unpack\CodeSection.txt"
 move "%~dp0%%f_unpack\install_script.iss" "%~dp0"
@@ -18,7 +20,7 @@ IF EXIST "%~dp0INISection.txt" move "%~dp0INISection.txt" "%~dp0/%%f_unpack"
 
 IF EXIST "%~dp0\Languages" xcopy /isvy "%~dp0\Languages" "%~dp0/%%f_unpack\embedded"
 move "%~dp0Issfix_iconextr.exe" "%~dp0\utils"
-move "%~dp0%%f_unpack" "%~dp0%%f_unpacked"
+move "%~dp0%%f_unpack" "%~dp0\Output\%%f_unpacked"
 )
 exit
 
@@ -26,11 +28,10 @@ exit
 @echo. 
 @echo === EXE files not exist ===
 @echo.
-@echo.Put installer in the current directory and Run again.
-ECHO Now It will close!
-@echo.
+@echo.Put installer in the current directory and:
+@echo.--- Close to Exit [ OR ] ---^>^>
 pause
-exit
+goto :check
 
 :message2 
 @echo. 
@@ -46,7 +47,7 @@ powershell -command "Expand-Archive innounp-2.zip utils -Force"
 @echo Downloaded and unpacked "innounp-2.zip" in utils
 DEL innounp-2.zip /S /Q
 @echo.
-@echo. --- Now innounp.exe exist in utils, please Run again. ---
-@echo.
+@echo.--- Now innounp.exe exist in utils ---
+@echo.--- Close to Exit [ OR ] ---^>^>
 pause
-exit
+goto :check
