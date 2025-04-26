@@ -1,5 +1,6 @@
 @Echo Off
 
+:check
 if not exist "%~dp0utils/innounp.exe" goto :message2
 if not exist "%~dp0*.exe" goto :message
 
@@ -13,11 +14,10 @@ exit
 @echo. 
 @echo === EXE files not exist ===
 @echo.
-@echo.Put installer in the current directory and Run again.
-ECHO Now It will close!
-@echo.
+@echo.Put installer in the current directory and:
+@echo.---   Close to Exit OR  ---
 pause
-exit
+goto :check
 
 :message2 
 @echo. 
