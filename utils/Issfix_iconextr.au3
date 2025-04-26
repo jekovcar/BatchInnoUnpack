@@ -2,7 +2,7 @@
 #AutoIt3Wrapper_Icon=Unpack.ico
 #AutoIt3Wrapper_UseUpx=y
 #AutoIt3Wrapper_UseX64=n
-#AutoIt3Wrapper_Res_Fileversion=0.9.5
+#AutoIt3Wrapper_Res_Fileversion=0.9.6
 #AutoIt3Wrapper_Res_ProductName=Issfix_iconextr
 #AutoIt3Wrapper_Res_ProductVersion=0.9
 #AutoIt3Wrapper_Res_CompanyName=jekovcar
@@ -13,7 +13,9 @@
 #include <Array.au3>
 #include <WinAPIFiles.au3>
 
-Local $sFind = "i»?;"
+;=================Fix UTF with BOM ====================
+
+Local $sFind = "iÂ»?;"
 Local $sReplace = ";"
 Local $sFind2 = "[Setup]"
 Local $sReplace2 = "[Setup]"& @CRLF &"SolidCompression=yes"& @CRLF & _
@@ -30,6 +32,8 @@ FileClose(FileOpen($sFileName2,2+128))
 FileWrite($sFileName2,FileRead($sFileName))
 FileMove($sFileName2, $sFileName, $FC_OVERWRITE)
 
+;=================extract SetupIcon====================
+
 Local $search = FileFindFirstFile("*.exe_unpack")
 Local $file = FileFindNextFile($search)
 Local $sString = StringReplace($file, "_unpack", "")
@@ -37,7 +41,8 @@ Local   $aIcon = _WinAPI_Create32BitHICON(_WinAPI_ExtractIcon(@ScriptDir & '\'&$
  _WinAPI_SaveHICONToFile(@ScriptDir & '\SetupIcon.ico', $aIcon)
  _WinAPI_DestroyIcon($aIcon)
 
-;=================================================================
+;=================extract sections=====================
+
 Local $sFileReg = "RegistrySection.txt"
 Local $sFileINI = "INISection.txt"
 Local $sFileISS = FileRead($sFileName)
