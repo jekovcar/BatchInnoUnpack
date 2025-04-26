@@ -15,7 +15,7 @@ exit
 @echo === EXE files not exist ===
 @echo.
 @echo.Put installer in the current directory and:
-@echo.---   Close to Exit OR  ---
+@echo.--- Close to Exit [ OR ] ---^>^>
 pause
 goto :check
 
@@ -33,7 +33,7 @@ powershell -command "Expand-Archive innounp-2.zip utils -Force"
 @echo Downloaded and unpacked "innounp-2.zip" in utils
 DEL innounp-2.zip /S /Q
 @echo.
-@echo. --- Now innounp.exe exist in utils, please Run again. ---
-@echo.
+@echo.--- Now innounp.exe exist in utils ---
+@echo.--- Close to Exit [ OR ] ---^>^>
 pause
-exit
+goto :check
