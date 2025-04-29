@@ -2,6 +2,7 @@
 
 :check
 if not exist "%~dp0utils/innounp.exe" goto :message2
+if not exist "%~dp0utils/wtee.exe" goto :message3
 if not exist "%~dp0*.exe" goto :message
 
 @echo.
@@ -34,6 +35,22 @@ powershell -command "Expand-Archive innounp-2.zip utils -Force"
 DEL innounp-2.zip /S /Q
 @echo.
 @echo.--- Now innounp.exe exist in utils ---
+@echo.--- Close to Exit [ OR ] ---^>^>
+pause
+goto :check
+
+:message3 
+@echo. 
+@echo === wtee.exe miss in utils === (wtee writes logfile) 
+@echo.
+@echo.For download and install
+pause
+@echo Please wait for download https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe
+@echo and move to /utils
+powershell -command "Start-BitsTransfer -Source https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe"
+powershell -command "Move-Item -Path wtee.exe -Destination utils"
+@echo.
+@echo.--- Now wtee exist in utils ---
 @echo.--- Close to Exit [ OR ] ---^>^>
 pause
 goto :check
