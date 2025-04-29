@@ -10,8 +10,6 @@ Check Utils.bat проверит наличие инсталлированных
 1.innounp.exe(download https://www.rathlev-home.de/tools/download/innounp-2.zip), консольный распаковчик
 2.Issfix_iconextr.exe(Issfix_iconextr.au3 thttps://www.autoitscript.com) добавляет иконку установщика, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
 3.disasm.exe(https://master.dl.sourceforge.net/project/innounp/other stuff/ROPS Disassembler/rops-3.0.53.935-disasm.rar)
-4.wtee(https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe)
-
 En=====================================================================================================================
 BatchInnoUnpack unpacks each installer into a folder "Output" with the _unpacked suffix.
 If the EXE files are not Inno Setup, then their icon will simply be unpacked as "Setup Icon.ico"
@@ -24,7 +22,6 @@ In utils must be:
 1.innounp.exe(download https://www.rathlev-home.de/tools/download/innounp-2.zip), console unpacker
 2.Issfix_iconextr.exe(Issfix_iconextr.au3 thttps://www.autoitscript.com) adds an installer icon, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
 3.disasm.exe(https://master.dl.sourceforge.net/project/innounp/other stuff/ROPS Disassembler/rops-3.0.53.935-disasm.rar)
-4.wtee(https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe)
 
 Releases on:
 https://github.com/jekovcar/BatchInnoUnpack
