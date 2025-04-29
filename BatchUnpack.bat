@@ -17,8 +17,8 @@ move "%~dp0SetupIcon.ico" "%~dp0/%%f_unpack"
 
 IF EXIST "%~dp0RegistrySection.txt" move "%~dp0RegistrySection.txt" "%~dp0/%%f_unpack"
 IF EXIST "%~dp0INISection.txt" move "%~dp0INISection.txt" "%~dp0/%%f_unpack"
-
-IF EXIST "%~dp0\Languages" xcopy /isvy "%~dp0\Languages" "%~dp0/%%f_unpack\embedded"
+ 
+IF EXIST "%~dp0/%%f_unpack\embedded" xcopy /isvy "%~dp0\Languages" "%~dp0/%%f_unpack\embedded"
 move "%~dp0Issfix_iconextr.exe" "%~dp0\utils"
 move "%~dp0%%f_unpack" "%~dp0\Output\%%f_unpacked"
 )
