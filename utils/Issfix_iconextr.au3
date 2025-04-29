@@ -2,7 +2,7 @@
 #AutoIt3Wrapper_Icon=Unpack.ico
 #AutoIt3Wrapper_UseUpx=y
 #AutoIt3Wrapper_UseX64=n
-#AutoIt3Wrapper_Res_Fileversion=0.9.7
+#AutoIt3Wrapper_Res_Fileversion=0.9.8
 #AutoIt3Wrapper_Res_ProductName=Issfix_iconextr
 #AutoIt3Wrapper_Res_ProductVersion=0.9
 #AutoIt3Wrapper_Res_CompanyName=jekovcar
@@ -27,10 +27,13 @@ Local $sFileINI = "INISection.txt"
 
 _ReplaceStringInFile($sFileName, $sFind, $sReplace)
 _ReplaceStringInFile($sFileName, $sFind2, $sReplace2)
-
-FileClose(FileOpen($sFileName2,2+128))
-FileWrite($sFileName2,FileRead($sFileName))
-FileMove($sFileName2, $sFileName, $FC_OVERWRITE)
+If FileRead($sFileName)="" Then
+  FileDelete ($sFileName)
+Else
+ FileClose(FileOpen($sFileName2,2+128))
+ FileWrite($sFileName2,FileRead($sFileName))
+ FileMove($sFileName2, $sFileName, $FC_OVERWRITE)
+EndIf
 
 ;=================extract SetupIcon====================
 
