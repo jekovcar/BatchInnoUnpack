@@ -3,7 +3,7 @@ BatchInnoUnpack распаковывает каждый установщик в 
 Если EXE-файлы не являются Inno Setup, то их значок будет просто распакован как "SetupIcon.ico"
 Опционально: Папку Languages можно убрать, для извлечения встроенных имен isl инсталлера.
 Опционально: Можно скачать ROPS disassembler для "CodeSection.txt" и установить в \utils    
-Запускать BatchUnpack.bat(BatchUnpack_with_Log.bat) рядом с InnoSetup файлами.
+Запускать BatchUnpack.bat рядом с InnoSetup файлами или просто exe.
 Скрипт втоматически скачает innounp.exe и установит его в utils.
 Check Utils.bat проверит наличие инсталлированных утилит, при необходимости скачает и инсталирует обновление.
 В utils должы быть: 
@@ -15,7 +15,7 @@ BatchInnoUnpack unpacks each installer into a folder "Output" with the _unpacked
 If the EXE files are not Inno Setup, then their icon will simply be unpacked as "Setup Icon.ico"
 Optional: The Languages ​​folder can be removed to extract the built-in names of the isl installer.
 Optional: You can download the ROPS disassembler for "CodeSection.txt" and install it in \utils
-Run BatchUnpack.bat(BatchUnpack_with_Log.bat) next to the InnoSetup files.
+Run BatchUnpack.bat next to the InnoSetup files or simple exe.
 The script will automatically download innounp.exe and install it in utils.
 Check Utils.bat checks for installed utilities, downloads and installs updates if necessary.
 In utils must be:
