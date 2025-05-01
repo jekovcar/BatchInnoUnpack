@@ -8,6 +8,7 @@ if not exist "%~dp0*.exe" goto :message
 @echo.
 @echo --- Unpacking EXE files with Log ---
 @echo.
+if exist "%~dp0Unpack_Log.txt" DEL /S /Q "%~dp0Unpack_Log.txt"
 move "%~dp0utils\Unpack" "%~dp0Unpack.cmd" 
 Unpack.cmd | "%~dp0utils/wtee.exe" "%~dp0Unpack_Log.txt"
 move "%~dp0Unpack.cmd" "%~dp0utils\Unpack"
