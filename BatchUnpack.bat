@@ -2,29 +2,18 @@
 
 :check
 if not exist "%~dp0utils/innounp.exe" goto :message2
+if not exist "%~dp0utils/wtee.exe" goto :message3
 if not exist "%~dp0*.exe" goto :message
-if not exist "%~dp0\Output" mkdir "%~dp0\Output"
 
-for %%f in (*.exe) do (
-IF EXIST "%~dp0\Output\%%f_unpacked" rmdir /S /Q "%~dp0\Output\%%f_unpacked"
- "%~dp0utils/innounp.exe" -x -m -a -"d%~dp0/%%f_unpack" "%~dp0\%%~nxf"
-IF EXIST "%~dp0%%f_unpack\embedded\CompiledCode.bin" "%~dp0utils/disasm.exe" "%~dp0%%f_unpack\embedded\CompiledCode.bin" "%~dp0%%f_unpack\CodeSection.txt"
-move "%~dp0%%f_unpack\install_script.iss" "%~dp0"
-move "%~dp0utils\Issfix_iconextr.exe" "%~dp0"
- "%~dp0Issfix_iconextr.exe"
-move "%~dp0install_script.iss" "%~dp0/%%f_unpack"
-move "%~dp0SetupIcon.ico" "%~dp0/%%f_unpack"
-
-IF EXIST "%~dp0RegistrySection.txt" move "%~dp0RegistrySection.txt" "%~dp0/%%f_unpack"
-IF EXIST "%~dp0INISection.txt" move "%~dp0INISection.txt" "%~dp0/%%f_unpack"
- 
-IF EXIST "%~dp0/%%f_unpack\embedded" xcopy /isvy "%~dp0\Languages" "%~dp0/%%f_unpack\embedded"
-move "%~dp0Issfix_iconextr.exe" "%~dp0\utils"
-move "%~dp0%%f_unpack" "%~dp0\Output\%%f_unpacked"
-)
+@echo.
+@echo --- Unpacking EXE files with Log ---
+@echo.
+move "%~dp0utils\Unpack" "%~dp0Unpack.cmd" 
+Unpack.cmd | "%~dp0utils/wtee.exe" "%~dp0Unpack_Log.txt"
+move "%~dp0Unpack.cmd" "%~dp0utils\Unpack"
 exit
 
-:message 
+:message
 @echo. 
 @echo === EXE files not exist ===
 @echo.
@@ -48,6 +37,22 @@ powershell -command "Expand-Archive innounp-2.zip utils -Force"
 DEL innounp-2.zip /S /Q
 @echo.
 @echo.--- Now innounp.exe exist in utils ---
+@echo.--- Close to Exit [ OR ] ---^>^>
+pause
+goto :check
+
+:message3 
+@echo. 
+@echo === wtee.exe miss in utils === (wtee writes logfile) 
+@echo.
+@echo.For download and install
+pause
+@echo Please wait for download https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe
+@echo and move to /utils
+powershell -command "Start-BitsTransfer -Source https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe"
+powershell -command "Move-Item -Path wtee.exe -Destination utils"
+@echo.
+@echo.--- Now wtee exist in utils ---
 @echo.--- Close to Exit [ OR ] ---^>^>
 pause
 goto :check
