@@ -1,11 +1,13 @@
 @Echo Off
 
 :check
+color 0a
 if not exist "%~dp0utils/innounp.exe" goto :message2
 if not exist "%~dp0utils/wtee.exe" goto :message3
 if not exist "%~dp0*.exe" goto :message
 
 IF not EXIST "%~dp0utils/disasm.exe" (
+color 0b
 @echo.
 @echo === disasm.exe miss in utils ===
 @echo.
@@ -27,6 +29,7 @@ move "%~dp0Unpack.cmd" "%~dp0utils\Unpack"
 exit
 
 :message
+color 0a
 @echo. 
 @echo === EXE files not exist ===
 @echo.
@@ -35,7 +38,8 @@ exit
 pause
 goto :check
 
-:message2 
+:message2
+color 06
 @echo. 
 @echo === innounp.exe miss in utils ===
 @echo.
@@ -54,7 +58,8 @@ DEL innounp-2.zip /S /Q
 pause
 goto :check
 
-:message3 
+:message3
+color 0e
 @echo. 
 @echo === wtee.exe miss in utils === (wtee writes logfile) 
 @echo.
