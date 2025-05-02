@@ -74,7 +74,7 @@ goto :check
 @echo. 
 @echo === innounp.exe miss in utils ===
 @echo.
-@echo.For download and install
+@echo.For download (~600kb) and install
 pause
 @echo Please wait for download https://www.rathlev-home.de/tools/download/innounp-2.zip
 @echo and unpack it to /utils
@@ -93,7 +93,7 @@ goto :check
 @echo. 
 @echo === disasm.exe miss in utils === (ROPS disassembler writes "CodeSection.txt")
 @echo.
-@echo.To download ROPS Disassembler and unpack it yourself into "/utils", go to:
+@echo.To download ROPS Disassembler (~245kb) and unpack it yourself into "/utils", go to:
 @echo.
 @echo.https://sourceforge.net/projects/innounp/files/other%20stuff/ROPS%20Disassembler/rops-3.0.53.935-disasm.rar
 @echo.
