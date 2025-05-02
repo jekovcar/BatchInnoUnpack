@@ -1,5 +1,6 @@
 @Echo Off
 :check
+color 0a
 @echo.
 @echo.                                 [  https://github.com/jekovcar/BatchInnoUnpack  ]
 @echo.
@@ -70,7 +71,8 @@ DEL innounp-2.zip /S /Q
 pause
 goto :check
 
-:message2 
+:message2
+color 06 
 @echo. 
 @echo === innounp.exe miss in utils ===
 @echo.
@@ -89,7 +91,8 @@ DEL innounp-2.zip /S /Q
 pause
 goto :check
 
-:message3 
+:message3
+color 0b
 @echo. 
 @echo === disasm.exe miss in utils === (ROPS disassembler writes "CodeSection.txt")
 @echo.
