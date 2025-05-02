@@ -5,6 +5,20 @@ if not exist "%~dp0utils/innounp.exe" goto :message2
 if not exist "%~dp0utils/wtee.exe" goto :message3
 if not exist "%~dp0*.exe" goto :message
 
+IF not EXIST "%~dp0utils/disasm.exe" (
+@echo.
+@echo === disasm.exe miss in utils ===
+@echo.
+@echo.Please run "CheckUtils" to install ROPS disassembler.
+@echo.
+@echo.Now Unpack will be without "CodeSection.txt"
+@echo.
+ECHO waiting 5 seconds...
+CHOICE /C:AB /D A /T 5 > NUL
+)
+ ELSE (
+)
+
 @echo.
 @echo --- Unpacking EXE files with Log ---
 @echo.
@@ -27,7 +41,7 @@ goto :check
 @echo. 
 @echo === innounp.exe miss in utils ===
 @echo.
-@echo.For download and install
+@echo.For download (~600kb) and install
 pause
 @echo Please wait for download https://www.rathlev-home.de/tools/download/innounp-2.zip
 @echo and unpack it to /utils
@@ -46,14 +60,10 @@ goto :check
 @echo. 
 @echo === wtee.exe miss in utils === (wtee writes logfile) 
 @echo.
-@echo.For download and install
+@echo.For download (~60kb) and install
 pause
 @echo Please wait for download https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe
 @echo and move to /utils
 powershell -command "Start-BitsTransfer -Source https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe"
 powershell -command "Move-Item -Path wtee.exe -Destination utils"
-@echo.
-@echo.--- Now wtee exist in utils ---
-@echo.--- Close to Exit [ OR ] ---^>^>
-pause
 goto :check
