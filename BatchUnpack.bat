@@ -16,8 +16,6 @@ IF not EXIST "%~dp0utils/disasm.exe" (
 ECHO waiting 5 seconds...
 CHOICE /C:AB /D A /T 5 > NUL
 )
- ELSE (
-)
 
 @echo.
 @echo --- Unpacking EXE files with Log ---
