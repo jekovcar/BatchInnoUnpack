@@ -2,9 +2,9 @@
 #AutoIt3Wrapper_Icon=Unpack.ico
 #AutoIt3Wrapper_UseUpx=y
 #AutoIt3Wrapper_UseX64=n
-#AutoIt3Wrapper_Res_Fileversion=0.9.8
+#AutoIt3Wrapper_Res_Fileversion=1.0.0
 #AutoIt3Wrapper_Res_ProductName=Issfix_iconextr
-#AutoIt3Wrapper_Res_ProductVersion=0.9
+#AutoIt3Wrapper_Res_ProductVersion=1.0.0
 #AutoIt3Wrapper_Res_CompanyName=jekovcar
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #include <File.au3>
@@ -41,7 +41,12 @@ Local $search = FileFindFirstFile("*.exe_unpack")
 Local $file = FileFindNextFile($search)
 Local $sString = StringReplace($file, "_unpack", "")
 Local   $aIcon = _WinAPI_Create32BitHICON(_WinAPI_ExtractIcon(@ScriptDir & '\'&$sString,  0))
+If FileExists(@ScriptDir & '\'&$sString &'_unpack\embedded') Then
  _WinAPI_SaveHICONToFile(@ScriptDir & '\SetupIcon.ico', $aIcon)
+Else
+  Local $sStringE = StringReplace($file, ".exe_unpack", "")
+ _WinAPI_SaveHICONToFile(@ScriptDir & '\'&$sStringE&'.ico', $aIcon)
+EndIf
  _WinAPI_DestroyIcon($aIcon)
 
 ;=================extract sections=====================
