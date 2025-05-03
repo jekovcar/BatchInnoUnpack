@@ -13,7 +13,7 @@ color 0b
 @echo.
 @echo.Please run "CheckUtils" to install ROPS disassembler.
 @echo.
-@echo.Now Unpack will be without "CodeSection.txt"
+@echo.Inno Unpacked will be without "CodeSection.txt"
 @echo.
 ECHO waiting 5 seconds...
 CHOICE /C:AB /D A /T 5 > NUL
