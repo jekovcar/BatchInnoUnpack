@@ -1,5 +1,5 @@
 # Use BatchInnoUnpack
-BatchInnoUnpack use jratlev's InnoUnpacker for unpacks each installer(EXE) into a folder "Output" with the _unpacked suffix.
+BatchInnoUnpack use jrathlev's InnoUnpacker for unpacks each installer(EXE) into a folder "Output" with the _unpacked suffix.
 <br>If the EXE file is not Inno Setup, then only the its icon will be simply unpacked.
 <br>Run BatchUnpack.bat next to the InnoSetup or simple EXE files.
 <br>The script will automatically download innounp.exe and install it in utils.
