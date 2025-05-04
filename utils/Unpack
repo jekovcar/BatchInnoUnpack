@@ -7,6 +7,7 @@ if not exist "%~dp0\Output" mkdir "%~dp0\Output"
 
 for %%f in (*.exe) do (
 IF EXIST "%~dp0\Output\%%f_unpacked" rmdir /S /Q "%~dp0\Output\%%f_unpacked"
+IF EXIST "%~dp0\Output\%%f_icon" rmdir /S /Q "%~dp0\Output\%%f_icon"
  "%~dp0utils/innounp.exe" -x -m -a -"d%~dp0/%%f_unpack" "%~dp0\%%~nxf"
 IF EXIST "%~dp0%%f_unpack\embedded\CompiledCode.bin" "%~dp0utils/disasm.exe" "%~dp0%%f_unpack\embedded\CompiledCode.bin" "%~dp0%%f_unpack\CodeSection.txt"
 move "%~dp0%%f_unpack\install_script.iss" "%~dp0"
@@ -20,7 +21,8 @@ IF EXIST "%~dp0INISection.txt" move "%~dp0INISection.txt" "%~dp0/%%f_unpack"
  
 IF EXIST "%~dp0/%%f_unpack\embedded" xcopy /isvy "%~dp0\Languages" "%~dp0/%%f_unpack\embedded"
 move "%~dp0Issfix_iconextr.exe" "%~dp0\utils"
-move "%~dp0%%f_unpack" "%~dp0\Output\%%f_unpacked"
+IF EXIST "%~dp0/%%f_unpack\embedded" move "%~dp0%%f_unpack" "%~dp0\Output\%%f_unpacked"
+IF not EXIST "%~dp0/%%f_unpack\embedded" move "%~dp0%%f_unpack" "%~dp0\Output\%%f_icon"
 )
 exit
 
