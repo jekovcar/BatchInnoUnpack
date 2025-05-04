@@ -2,9 +2,9 @@
 #AutoIt3Wrapper_Icon=Unpack.ico
 #AutoIt3Wrapper_UseUpx=y
 #AutoIt3Wrapper_UseX64=n
-#AutoIt3Wrapper_Res_Fileversion=1.0.0
+#AutoIt3Wrapper_Res_Fileversion=1.0.1
 #AutoIt3Wrapper_Res_ProductName=Issfix_iconextr
-#AutoIt3Wrapper_Res_ProductVersion=1.0.0
+#AutoIt3Wrapper_Res_ProductVersion=1.0.1
 #AutoIt3Wrapper_Res_CompanyName=jekovcar
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #include <File.au3>
@@ -35,7 +35,7 @@ Else
  FileMove($sFileName2, $sFileName, $FC_OVERWRITE)
 EndIf
 
-;=================extract SetupIcon====================
+;=================extract Icon====================
 
 Local $search = FileFindFirstFile("*.exe_unpack")
 Local $file = FileFindNextFile($search)
@@ -55,7 +55,7 @@ Local $sFileReg = "RegistrySection.txt"
 Local $sFileINI = "INISection.txt"
 Local $sFileISS = FileRead($sFileName)
 
-;---------------------------------------------
+;----------------------Registry-----------------------
 If StringInStr($sFileISS, "[Registry]")=0 Then
 	FileDelete($sFileReg)
 Else
@@ -66,7 +66,7 @@ Else
 	FileClose($sFileReg)
 EndIf
 
-;----------------------------------------------
+;-----------------------INI-----------------------
 If StringInStr($sFileISS, "[INI]")=0 Then
 	FileDelete($sFileINI)
 Else
