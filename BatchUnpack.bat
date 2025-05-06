@@ -26,7 +26,6 @@ if exist "%~dp0Unpack_Log.txt" DEL /S /Q "%~dp0Unpack_Log.txt"
 move "%~dp0utils\Unpack" "%~dp0Unpack.cmd" 
 Unpack.cmd | "%~dp0utils/wtee.exe" "%~dp0Unpack_Log.txt"
 move "%~dp0Unpack.cmd" "%~dp0utils\Unpack"
-powershell -command "Invoke-Item Output"
 exit
 
 :message
@@ -46,9 +45,9 @@ color 06
 @echo.
 @echo.For download (~600kb) and install
 pause
-@echo Please wait for download https://www.rathlev-home.de/tools/download/innounp-2.zip
+@echo Please wait for download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
 @echo and unpack it to /utils
-powershell -command "Start-BitsTransfer -Source https://www.rathlev-home.de/tools/download/innounp-2.zip -Destination innounp-2.zip"
+powershell -command "Start-BitsTransfer -Source https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip"
 powershell -command "Expand-Archive innounp-2.zip utils -Force"
 @echo.
 @echo Downloaded and unpacked "innounp-2.zip" in utils
