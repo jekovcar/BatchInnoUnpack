@@ -39,7 +39,7 @@ PAUSE
 EXIT
 
 :yes
-rundll32 url.dll,FileProtocolHandler https://www.rathlev-home.de/tools/prog-e.html#unpack
+rundll32 url.dll,FileProtocolHandler https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/
 GOTO over
 
 :message2
@@ -51,9 +51,9 @@ color 06
 @echo.
 @echo.For download (~600kb) latest innounpacker and install
 pause
-@echo Please wait for download https://www.rathlev-home.de/tools/download/innounp-2.zip
+@echo Please wait for download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
 @echo and unpack it to /utils
-powershell -command "Start-BitsTransfer -Source https://www.rathlev-home.de/tools/download/innounp-2.zip -Destination innounp-2.zip"
+powershell -command "Start-BitsTransfer -Source https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip"
 powershell -command "Expand-Archive innounp-2.zip utils -Force"
 @echo.
 @echo Downloaded and unpacked "innounp-2.zip" in utils
