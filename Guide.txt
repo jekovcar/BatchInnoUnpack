@@ -7,19 +7,19 @@ BatchInnoUnpack распаковывает каждый установщик(EXE
 Скрипт втоматически скачает innounp.exe и установит его в utils.
 CheckUtils.bat проверит наличие инсталлированных утилит, при необходимости скачает и инсталирует обновление.
 В utils должы быть: 
-1.innounp.exe(download https://www.rathlev-home.de/tools/download/innounp-2.zip), консольный распаковчик
+1.innounp.exe(download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip)
 2.Issfix_iconextr.exe(Issfix_iconextr.au3 thttps://www.autoitscript.com) добавляет иконку установщика, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
 3.disasm.exe(https://master.dl.sourceforge.net/project/innounp/other stuff/ROPS Disassembler/rops-3.0.53.935-disasm.rar)
 En=====================================================================================================================
 BatchInnoUnpack unpacks each installer(EXE) into a folder "Output" with the _unpacked suffix.
-If the EXE file is not Inno Setup(or not decrypted), its icon will be extracted to "Output" with the _icon suffix..
+If the EXE file is not Inno Setup(or not decrypted), its icon will be extracted to "Output" with the _icon suffix.
 Optional: The Languages ​​folder can be removed to extract the built-in names of the isl installer.
 Optional: You can download the ROPS disassembler for "CodeSection.txt" and install it in \utils
 Run BatchUnpack.bat next to the InnoSetup or simple EXE files.
 The script will automatically download innounp.exe and install it in utils.
 CheckUtils.bat checks for installed utilities, downloads and installs updates if necessary.
 In utils must be:
-1.innounp.exe(download https://www.rathlev-home.de/tools/download/innounp-2.zip), console unpacker
+1.innounp.exe(download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip)
 2.Issfix_iconextr.exe(Issfix_iconextr.au3 thttps://www.autoitscript.com) adds an installer icon, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
 3.disasm.exe(https://master.dl.sourceforge.net/project/innounp/other stuff/ROPS Disassembler/rops-3.0.53.935-disasm.rar)
 
