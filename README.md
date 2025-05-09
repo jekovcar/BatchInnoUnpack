@@ -4,7 +4,7 @@ BatchInnoUnpack use J.Rathlev's InnoUnpacker for unpacks each installer(EXE) int
 <br>Run BatchUnpack.bat next to the InnoSetup or simple EXE files.
 <br>The script will automatically download innounp.exe and install it in utils.
 <br>In utils must be:
-<br>1. innounp.exe([innounp-2.zip](https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip)), console unpacker autoinstall by CheckUtils
+<br>1. innounp.exe([innounp-2.zip](https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip)), unpacker autoinstall by CheckUtils
 <br>2. Issfix_iconextr.exe (https://www.autoitscript.com) adds an installer icon, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
 <br>Optional 2 disassemblers for "CodeSection.txt":
 <br> ifpsdasm.exe(https://github.com/Wack0/IFPSTools.NET/releases/) autoinstall by CheckUtils
