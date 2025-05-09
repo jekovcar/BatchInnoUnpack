@@ -9,7 +9,11 @@ for %%f in (*.exe) do (
 IF EXIST "%~dp0\Output\%%f_unpacked" rmdir /S /Q "%~dp0\Output\%%f_unpacked"
 IF EXIST "%~dp0\Output\%%f_icon" rmdir /S /Q "%~dp0\Output\%%f_icon"
  "%~dp0utils/innounp.exe" -x -m -a -"d%~dp0/%%f_unpack" "%~dp0\%%~nxf"
-IF EXIST "%~dp0%%f_unpack\embedded\CompiledCode.bin" "%~dp0utils/disasm.exe" "%~dp0%%f_unpack\embedded\CompiledCode.bin" "%~dp0%%f_unpack\CodeSection.txt"
+IF EXIST "%~dp0%%f_unpack\embedded\CompiledCode.bin" (
+"%~dp0utils/disasm.exe" "%~dp0%%f_unpack\embedded\CompiledCode.bin" "%~dp0%%f_unpack\CodeSection_rops.txt"
+"%~dp0utils/ifpstools/ifpsdasm.exe" "%~dp0%%f_unpack\embedded\CompiledCode.bin"
+move "%~dp0%%f_unpack\embedded\CompiledCode.txt" "%~dp0%%f_unpack\CodeSection_Ifps.txt"
+)
 move "%~dp0%%f_unpack\install_script.iss" "%~dp0"
 move "%~dp0utils\Issfix_iconextr.exe" "%~dp0"
  "%~dp0Issfix_iconextr.exe"
