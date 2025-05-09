@@ -6,18 +6,20 @@ if not exist "%~dp0utils/innounp.exe" goto :message2
 if not exist "%~dp0utils/wtee.exe" goto :message3
 if not exist "%~dp0*.exe" goto :message
 
-IF not EXIST "%~dp0utils/disasm.exe" (
-color 0b
+if not exist "%~dp0utils/ifpstools/ifpsdasm.exe" (
+    if not exist "%~dp0utils/disasm.exe" (
+        color 0b
 @echo.
-@echo === disasm.exe miss in utils ===
+@echo === disassemblers miss in utils ===
 @echo.
-@echo.Please run "CheckUtils" to install ROPS disassembler.
+@echo.Please run "CheckUtils" to install at last one disassembler.
 @echo.
 @echo.Inno Unpacked will be without "CodeSection.txt"
 @echo.
 ECHO waiting 5 seconds...
 CHOICE /C:AB /D A /T 5 > NUL
-)
+        )
+    )
 
 @echo.
 @echo --- Unpacking EXE files with Log ---
