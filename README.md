@@ -10,7 +10,6 @@
 <br>Optional disassemblers for "CodeSection.txt":
 <br> ifpsdasm.exe(https://github.com/Wack0/IFPSTools.NET/releases/) autoinstall by CheckUtils
 <br> disasm.exe([rops-3.0.53.935-disasm.rar](https://sourceforge.net/projects/innounp/files/other%20stuff/ROPS%20Disassembler/rops-3.0.53.935-disasm.rar)) manually install
-<br> Optional In Languages: .isl files from the releases at https://files.jrsoftware.org/is/6/, can be removed to extract the embedded installer's isl.
 # Reference
 <p2>https://github.com/jrathlev/InnoUnpacker-Windows-GUI/tree/master/innounp-2
 <br>https://www.rathlev-home.de/tools/prog-e.html#unpack
