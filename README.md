@@ -1,5 +1,5 @@
 # Use BatchInnoUnpack
-<br>Run on Windows 7 and later. IFPSdasm require NET Framework 4.7.2 and above. PowerShell(embedded in win10,11) is required for autoinstall components or download the latest complete archiv.
+<br>Run on Windows 7 and later. IFPSdasm require NET Framework 4.7.2 and above. PowerShell v5.1 and above is required for autoinstall components or download the latest complete archiv.
 <br>BatchInnoUnpack use J.Rathlev's InnoUnpacker for unpacks each installer(EXE) into a folder "Output" with the _unpacked suffix.
 <br>If the EXE file is not Inno Setup(or not decrypted), its icon will be extracted to "Output" with the _icon suffix.
 <br>Run BatchUnpack.bat next to the InnoSetup or simple EXE files.
