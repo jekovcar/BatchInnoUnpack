@@ -1,8 +1,18 @@
 @Echo Off
 :check
-color 0a
+powershell "exit $PSVersionTable.PSVersion.Major"
+if %errorlevel% GEQ 5 (
+    @Echo Off
+    color 0a 
+) else (
+color fc
+@echo.Download and install are not support by current powershell version:
+    powershell -command "(Get-Host).Version.ToString()"
+@echo.Update powershell to v5.1 or make it manually.
+)
+
 @echo.
-@echo.                                 [  https://github.com/jekovcar/BatchInnoUnpack  ]
+@echo.                                            [  https://github.com/jekovcar/BatchInnoUnpack  ]
 @echo.
 @echo.Installed InnoIssFixIconExtract :
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/Issfix_iconextr.exe').VersionInfo.FileVersion"
@@ -53,9 +63,10 @@ color 06
 @echo. 
 @echo === innounp.exe miss in utils ===
 @echo.
-:over
-@echo.
-@echo.For download (~600kb) latest innounpacker and install
+powershell "exit $PSVersionTable.PSVersion.Major"
+if %errorlevel% GEQ 5 (
+@Echo Off
+@echo.For download ~600kb and install
 pause
 @echo Please wait for download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
 @echo and unpack it to /utils
@@ -64,10 +75,13 @@ powershell -command "Expand-Archive innounp-2.zip utils -Force"
 @echo.
 @echo Downloaded and unpacked "innounp-2.zip" in utils
 DEL innounp-2.zip /S /Q
-@echo.
-@echo.--- Now innounp.exe exist in utils ---
-@echo.--- Close to Exit [ OR ] ---^>^>
+) else (
+color fc
+@echo.Download and install are not support by current powershell version:
+    powershell -command "(Get-Host).Version.ToString()"
+@echo.Download ~600kb it manually from  https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
 pause
+)
 goto :check
 
 :message3
@@ -89,7 +103,10 @@ color 0b
 @echo. 
 @echo === ifpsdasm.exe miss in utils/ifpstools === (IFPS disassembler writes "CodeSection_ifps.txt")
 @echo.
-@echo.To download IFPS disassembler (~530kb) and install
+powershell "exit $PSVersionTable.PSVersion.Major"
+if %errorlevel% GEQ 5 (
+@Echo Off
+@echo.For download IFPS disassembler ~530kb and install
 pause
 @echo Please wait for download https://github.com/Wack0/IFPSTools.NET/releases/download/v2.0.3/ifpstools-net_v2.0.3.zip
 @echo and unpack it to /utils
@@ -98,8 +115,12 @@ powershell -command "Expand-Archive ifpstools-net_v2.0.3.zip utils/ifpstools -Fo
 @echo.
 @echo Downloaded and unpacked "ifpstools-net_v2.0.3.zip" in utils
 DEL ifpstools-net_v2.0.3.zip /S /Q
-@echo.
-@echo.--- Now ifpsdasm.exe exist in utils/ifpstools ---
-@echo.--- Close to Exit [ OR ] ---^>^>
+) else (
+color fc
+@echo.Download and install are not support by current powershell version:
+    powershell -command "(Get-Host).Version.ToString()"
+@echo.Download ~530kb it manually at https://github.com/Wack0/IFPSTools.NET/releases/download/v2.0.3/ifpstools-net_v2.0.3.zip
+@echo.and unpack into utils/ifpstools
 pause
+)
 goto :check
