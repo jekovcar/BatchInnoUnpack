@@ -12,32 +12,31 @@ color fc
 )
 
 @echo.
-@echo.                                            [  https://github.com/jekovcar/BatchInnoUnpack  ]
 @echo.
-@echo.Installed InnoIssFixIconExtract :
+@echo.Installed InnoIssFixIconExtract :          https://github.com/jekovcar/BatchInnoUnpack/releases
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/Issfix_iconextr.exe').VersionInfo.FileVersion"
 @echo.
 @Echo Off
 if not exist "%~dp0utils/innounp.exe" goto :message2
-@echo.Installed InnoUnpacker version :
+@echo.Installed InnoUnpacker version :           https://github.com/jrathlev/InnoUnpacker-Windows-GUI
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe').VersionInfo.FileVersion"
 @echo.
 
 @Echo Off
 if not exist "%~dp0utils/ifpstools/ifpsdasm.exe" goto :message4
-@echo.Installed IFPS disassembler version:
+@echo.Installed IFPS disassembler version:       https://github.com/Wack0/IFPSTools.NET/releases
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/ifpstools/ifpsdasm.exe').VersionInfo.FileVersion"
 @echo.
 
 @Echo Off
 if not exist "%~dp0utils/disasm.exe" goto :message3
-@echo.Installed ROPS disassembler
+@echo.Installed ROPS disassembler                https://sourceforge.net/projects/innounp/files/other%20stuff
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/disasm.exe').VersionInfo.FileVersion"
 @echo.
 
 :start
 @echo.
-@echo.Check online Update or Overwrite the latest "Unicode version of the console application Inno Setup Unpacker" ?
+@echo.Check Update or Overwrite the latest "Unicode version of the console application Inno Setup Unpacker"?
 SET choice=
 SET /p choice=Pls, enter Y/N/O: 
 IF NOT '%choice%'=='' SET choice=%choice:~0,1%
