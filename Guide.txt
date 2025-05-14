@@ -1,5 +1,6 @@
 Ru=====================================================================================================================
-Запускается на Windows 7 и более поздних версиях. IFPSdasm требует NET Framework 4.7.2 и выше. PowerShell v5.1 и выше требуется для автоматической установки компонентов или делайте вручную.
+Запускается на Windows 7 и более поздних версиях. IFPSdasm требует NET Framework 4.7.2 и выше. Windows Management Framework 5.1
+(Win10,11 contain) требуется для автоматической установки компонентов или делайте вручную.
 BatchInnoUnpack распаковывает каждый установщик(EXE) в папку "Output" с суффиксом _unpacked.
 Если EXE-файл не является Inno Setup(либо не дешифрован), то его значок будет извлечен в "Output" с суффиксом _icon.    
 Запускать BatchUnpack.bat рядом с InnoSetup или просто EXE файлами.
@@ -13,8 +14,8 @@ ifpstools\ifpsdasm.exe(https://github.com/Wack0/IFPSTools.NET/releases/)
 disasm.exe(https://master.dl.sourceforge.net/project/innounp/other stuff/ROPS Disassembler/rops-3.0.53.935-disasm.rar)
 Опционально Папку Languages можно убрать, для извлечения встроенных имен isl инсталлера.
 En=====================================================================================================================
-Run on Windows 7 and later. IFPSdasm require NET Framework 4.7.2 and above. PowerShell v5.1 and above is required for autoinstall 
-components or make it manually.
+Run on Windows 7 and later. IFPSdasm require NET Framework 4.7.2 and above. Windows Management Framework 5.1
+(Win10,11 contain) is required for autoinstall components or make it manually.
 BatchInnoUnpack use J.Rathlev's InnoUnpacker for unpacks each installer(EXE) into a folder "Output" with the _unpacked suffix.
 BatchInnoUnpack unpacks each installer(EXE) into a folder "Output" with the _unpacked suffix.
 If the EXE file is not Inno Setup(or not decrypted), its icon will be extracted to "Output" with the _icon suffix.
