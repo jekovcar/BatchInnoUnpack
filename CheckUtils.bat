@@ -8,7 +8,7 @@ if %errorlevel% GEQ 5 (
 color fc
 @echo.Download and install are not support by current powershell version:
     powershell -command "(Get-Host).Version.ToString()"
-@echo.Update powershell to v5.1 or make it manually.
+@echo.Upd PS to v5.1 or make it manually.WMF5.1: https://www.microsoft.com/en-us/download/details.aspx?id=54616
 )
 
 @echo.
