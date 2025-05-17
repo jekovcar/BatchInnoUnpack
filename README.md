@@ -1,6 +1,6 @@
 # Use BatchInnoUnpack
 <br>BatchInnoUnpack is CLI, that use J.Rathlev's InnoUnpacker for unpacks each installer(EXE) into a folder "Output" with the _unpacked suffix.
-<br>If the EXE file is not Inno Setup(or not decrypted), its icon will be extracted to "Output" with the _icon suffix.
+If the EXE file is not Inno Setup(or not decrypted), its icon will be extracted to "Output" with the _icon suffix.
 <br>Run on Windows 7 and later. IFPSdasm require NET Framework 4.7.2 and above. [Windows Management Framework (WMF) 5.1](https://www.microsoft.com/en-us/download/details.aspx?id=54616&msockid=14111bf5f44a694b1ced0e47f53f6822) is required(Win10,11 contain) for autoinstall components or download the [latest complete archiv](https://disk.yandex.ru/d/izU_tWfE_oJ43Q).
 <br>Start BatchUnpack.bat next to the InnoSetup or simple EXE files.
 <br>The script will automatically download innounp.exe and install it in utils.
