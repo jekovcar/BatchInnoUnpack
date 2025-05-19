@@ -1,4 +1,5 @@
 @Echo Off
+
 :check
 powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
@@ -10,6 +11,16 @@ color fc
     powershell -command "(Get-Host).Version.ToString()"
 @echo.Upd PS to v5.1 or make it manually.WMF5.1: https://www.microsoft.com/en-us/download/details.aspx?id=54616
 )
+
+for /F %%I in ('curl.exe -sLo /dev/null -w %%{url_effective} https://github.com/Wack0/IFPSTools.NET/releases/latest') do set ip=%%I
+set word=download
+set str=%ip%
+call set str=%%str:tag=%word%%%
+set suffix=
+set str1=%ip%
+call set str1=%%str1:https://github.com/Wack0/IFPSTools.NET/releases/tag/=%suffix%%%
+set str2=%str%/ifpstools-net_%str1%.zip
+set str3=ifpstools-net_%str1%.zip
 
 @echo.
 @echo.
@@ -24,7 +35,7 @@ powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe'
 
 @Echo Off
 if not exist "%~dp0utils/ifpstools/ifpsdasm.exe" goto :message4
-@echo.Installed IFPS disassembler version:       https://github.com/Wack0/IFPSTools.NET/releases
+@echo.Installed IFPS disassembler version:       %ip%
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/ifpstools/ifpsdasm.exe').VersionInfo.FileVersion"
 @echo.
 
@@ -108,19 +119,20 @@ powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
 @Echo Off
 @echo.For download IFPS disassembler ~530kb and install
+echo %str2%
 pause
-@echo Please wait for download https://github.com/Wack0/IFPSTools.NET/releases/download/v2.0.3/ifpstools-net_v2.0.3.zip
+@echo Please wait for download %str2%
 @echo and unpack it to /utils
-powershell -command "Start-BitsTransfer -Source https://github.com/Wack0/IFPSTools.NET/releases/download/v2.0.3/ifpstools-net_v2.0.3.zip"
-powershell -command "Expand-Archive ifpstools-net_v2.0.3.zip utils/ifpstools -Force"
+powershell -command "Start-BitsTransfer -Source %str2%"
+powershell -command "Expand-Archive %str3% utils/ifpstools -Force"
 @echo.
-@echo Downloaded and unpacked "ifpstools-net_v2.0.3.zip" in utils
-DEL ifpstools-net_v2.0.3.zip /S /Q
+@echo Downloaded and unpacked %str3% in utils
+DEL %str3% /S /Q
 ) else (
 color fc
 @echo.Download and install are not support by current powershell version:
     powershell -command "(Get-Host).Version.ToString()"
-@echo.Download ~530kb it manually at https://github.com/Wack0/IFPSTools.NET/releases/download/v2.0.3/ifpstools-net_v2.0.3.zip
+@echo.Download ~530kb it manually at %str2%
 @echo.and unpack into utils/ifpstools
 pause
 )
