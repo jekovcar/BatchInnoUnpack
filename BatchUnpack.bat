@@ -28,6 +28,7 @@ if exist "%~dp0Unpack_Log.txt" DEL /S /Q "%~dp0Unpack_Log.txt"
 move "%~dp0utils\Unpack" "%~dp0Unpack.cmd" 
 Unpack.cmd | "%~dp0utils/wtee.exe" "%~dp0Unpack_Log.txt"
 move "%~dp0Unpack.cmd" "%~dp0utils\Unpack"
+IF EXIST "%~dp0\Output\curl.exe_icon" rmdir /S /Q "%~dp0\Output\curl.exe_icon"
 exit
 
 :message
