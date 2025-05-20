@@ -4,7 +4,10 @@
 color 0a
 if not exist "%~dp0utils/innounp.exe" goto :message2
 if not exist "%~dp0utils/wtee.exe" goto :message3
-if not exist "%~dp0*.exe" goto :message
+set n=0
+for %%a in (*.exe) do set /a n+=1
+IF exist "curl.exe" set /a "n=%n%-1"
+if %n%==0 goto :message
 
 if not exist "%~dp0utils/ifpstools/ifpsdasm.exe" (
     if not exist "%~dp0utils/disasm.exe" (
