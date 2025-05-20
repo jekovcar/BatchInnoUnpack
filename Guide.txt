@@ -10,7 +10,7 @@ CheckUtils.bat проверит наличие инсталлированных 
 1.innounp.exe(download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip)
 2.Issfix_iconextr.exe(Issfix_iconextr.au3 thttps://www.autoitscript.com) добавляет иконку установщика, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
 Опционально 2 дизассемблера для "CodeSection.txt":
-ifpsdasm.exe(https://github.com/Wack0/IFPSTools.NET),после удаления utils\ifpstools, CheckUtils установит последний.  
+ifpsdasm.exe(https://github.com/Wack0/IFPSTools.NET),выбор N CheckUpdate установит последний.  
 disasm.exe(https://master.dl.sourceforge.net/project/innounp/other stuff/ROPS Disassembler/rops-3.0.53.935-disasm.rar)
 Опционально Папку Languages можно убрать, для извлечения встроенных имен isl инсталлера.
 En=====================================================================================================================
@@ -28,7 +28,7 @@ In utils must be:
 1.innounp.exe(download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip)
 2.Issfix_iconextr.exe(Issfix_iconextr.au3 thttps://www.autoitscript.com) adds an installer icon, bom utf8  "install_script.iss":"SolidCompression=yes"&"SetupIconFile=SetupIcon.ico"&"VersionInfoVersion=" &"AppCopyright="
 Optional 2 disassemblers for "CodeSection.txt":
-ifpsdasm.exe(https://github.com/Wack0/IFPSTools.NET),remove utils\ifpstools CheckUtils autoinstall the latest one.
+ifpsdasm.exe(https://github.com/Wack0/IFPSTools.NET),select N CheckUpdate autoinstall the latest one.
 disasm.exe(https://master.dl.sourceforge.net/project/innounp/other stuff/ROPS Disassembler/rops-3.0.53.935-disasm.rar)
 Optional: The Languages ​​folder can be removed to extract the built-in names of the isl installer.
 
