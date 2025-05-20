@@ -35,7 +35,7 @@ powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe'
 
 @Echo Off
 if not exist "%~dp0utils/ifpstools/ifpsdasm.exe" goto :message4
-@echo.Installed IFPS disassembler version:       %ip%
+@echo.Installed IFPS disassembler version:       https://github.com/Wack0/IFPSTools.NET/releases
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/ifpstools/ifpsdasm.exe').VersionInfo.FileVersion"
 @echo.
 
@@ -117,6 +117,19 @@ color 0b
 @echo.
 powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
+
+IF not exist "curl.exe" (
+   IF not exist "%SystemRoot%\System32\curl.exe" (
+
+@echo.
+@echo.Not exist curl to define and autoinstall the latest IFPS disassembler.
+@echo.Download and unpack manually binary curl.exe nearby to CheckUtils from:
+@echo.
+@echo.https://curl.se/windows/dl-8.13.0_4/curl-8.13.0_4-win32-mingw.zip
+pause
+goto :check
+   )
+)
 @Echo Off
 @echo.For download IFPS disassembler ~530kb and install
 echo %str2%
