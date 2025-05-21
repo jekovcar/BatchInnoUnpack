@@ -27,7 +27,7 @@ set str3=ifpstools-net_%str1%.zip
 set or_=
 IF exist "curl.exe" set or_=true
 IF exist "%SystemRoot%\System32\curl.exe" set or_=true
-if defined or_ curl.exe -sLo /dev/null -w %%{url_effective} https://github.com/jekovcar/BatchInnoUnpack/releases/latest
+if defined or_ curl.exe -sLo /dev/null -w '%%{url_effective}' https://github.com/jekovcar/BatchInnoUnpack/releases/latest
 @echo.
 @echo.Installed InnoIssFixIconExtract :          https://github.com/jekovcar/BatchInnoUnpack/releases
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/Issfix_iconextr.exe').VersionInfo.FileVersion"
@@ -43,7 +43,7 @@ powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe'
 if not exist "%~dp0utils/ifpstools/ifpsdasm.exe" goto :message4
 IF exist "curl.exe" set or_=true
 IF exist "%SystemRoot%\System32\curl.exe" set or_=true
-if defined or_ curl.exe -sLo /dev/null -w %%{url_effective} https://github.com/Wack0/IFPSTools.NET/releases/latest
+if defined or_ curl.exe -sLo /dev/null -w '%%{url_effective}' https://github.com/Wack0/IFPSTools.NET/releases/latest
 @echo.
 @echo.Installed IFPS disassembler version:       https://github.com/Wack0/IFPSTools.NET/releases
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/ifpstools/ifpsdasm.exe').VersionInfo.FileVersion"
