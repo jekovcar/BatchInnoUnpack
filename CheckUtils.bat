@@ -58,6 +58,13 @@ ECHO "%choice%" is not valid
 ECHO.
 GOTO start
 
+:no
+@echo.
+@echo.--- Close to Exit [ OR ] ---^>^>
+@echo.Next to Update the latest release IFPS disassembler
+PAUSE
+goto ifps
+
 :yes
 rundll32 url.dll,FileProtocolHandler https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/
 GOTO over
@@ -109,7 +116,7 @@ color 0b
 @echo. 
 @echo === ifpsdasm.exe miss in utils/ifpstools === (IFPS disassembler writes "CodeSection_ifps.txt")
 @echo.
-:no
+:ifps
 @echo.
 powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
