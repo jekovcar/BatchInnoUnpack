@@ -9,7 +9,7 @@ if %errorlevel% GEQ 5 (
 color fc
 @echo.Download and install are not support by current powershell version:
     powershell -command "(Get-Host).Version.ToString()"
-@echo.Upd PS to v5.1 or make it manually.WMF5.1: https://www.microsoft.com/en-us/download/details.aspx?id=54616
+@echo.Upd PS to v5.1 manually WMF5.1: https://www.microsoft.com/en-us/download/details.aspx?id=54616
 )
 IF exist "curl.exe" set or_=true
 IF exist "%SystemRoot%\System32\curl.exe" set or_=true
@@ -23,20 +23,18 @@ call set str1=%%str1:https://github.com/Wack0/IFPSTools.NET/releases/tag/=%suffi
 set str2=%str%/ifpstools-net_%str1%.zip
 set str3=ifpstools-net_%str1%.zip
 
- 
-set or_=
+@Echo Off
+if not exist "%~dp0utils/innounp.exe" goto :message2
+@echo.Installed InnoUnpacker version :           https://github.com/jrathlev/InnoUnpacker-Windows-GUI
+powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe').VersionInfo.FileVersion"
+@echo.
+
 IF exist "curl.exe" set or_=true
 IF exist "%SystemRoot%\System32\curl.exe" set or_=true
 if defined or_ curl.exe -sLo /dev/null -w '%%{url_effective}' https://github.com/jekovcar/BatchInnoUnpack/releases/latest
 @echo.
 @echo.Installed InnoIssFixIconExtract :          https://github.com/jekovcar/BatchInnoUnpack/releases
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/Issfix_iconextr.exe').VersionInfo.FileVersion"
-@echo.
-
-@Echo Off
-if not exist "%~dp0utils/innounp.exe" goto :message2
-@echo.Installed InnoUnpacker version :           https://github.com/jrathlev/InnoUnpacker-Windows-GUI
-powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe').VersionInfo.FileVersion"
 @echo.
 
 @Echo Off
@@ -57,7 +55,7 @@ powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/disasm.exe')
 
 :start
 @echo.
-@echo.Check Update or Overwrite the latest "Unicode version of the console application Inno Setup Unpacker"?
+@echo.Check Update or Overwrite(O) the latest Inno Setup Unpacker/Ifpsdasm(N)?
 SET choice=
 SET /p choice=Pls, enter Y/N/O: 
 IF NOT '%choice%'=='' SET choice=%choice:~0,1%
@@ -67,13 +65,6 @@ IF /i '%choice%'=='O' GOTO over
 ECHO "%choice%" is not valid
 ECHO.
 GOTO start
-
-:no
-@echo.
-@echo.--- Close to Exit [ OR ] ---^>^>
-@echo.Next to Update the latest release IFPS disassembler
-PAUSE
-goto ifps
 
 :yes
 rundll32 url.dll,FileProtocolHandler https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/
@@ -89,7 +80,7 @@ color 06
 powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
 @Echo Off
-@echo.For download ~600kb and install
+@echo.For download Inno Setup Unpacker ~600kb and install
 pause
 @echo Please wait for download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
 @echo and unpack it to /utils
@@ -102,7 +93,7 @@ DEL innounp-2.zip /S /Q
 color fc
 @echo.Download and install are not support by current powershell version:
     powershell -command "(Get-Host).Version.ToString()"
-@echo.Download ~600kb it manually from  https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
+@echo.Download Inno Setup Unpacker manuallyand unpack to utils from:  https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
 pause
 )
 goto :check
@@ -111,7 +102,7 @@ goto :check
 @echo. 
 @echo === disasm.exe miss in utils === (ROPS disassembler writes "CodeSection_rops.txt")
 @echo.
-@echo.To download ROPS Disassembler (~245kb) and unpack it yourself into "/utils", go to:
+@echo.To download ROPS Disassembler ~245kb and unpack it yourself into "/utils", go to:
 @echo.
 @echo.https://sourceforge.net/projects/innounp/files/other%20stuff/ROPS%20Disassembler/rops-3.0.53.935-disasm.rar
 @echo.
@@ -126,7 +117,7 @@ color 0b
 @echo. 
 @echo === ifpsdasm.exe miss in utils/ifpstools === (IFPS disassembler writes "CodeSection_ifps.txt")
 @echo.
-:ifps
+:no
 @echo.
 powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
@@ -158,7 +149,7 @@ DEL %str3% /S /Q
 color fc
 @echo.Download and install are not support by current powershell version:
     powershell -command "(Get-Host).Version.ToString()"
-@echo.Download ~530kb it manually at %str2%
+@echo.Download IFPS disassembler manually at %str2%
 @echo.and unpack into utils/ifpstools
 pause
 )
