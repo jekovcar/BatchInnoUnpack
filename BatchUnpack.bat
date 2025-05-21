@@ -52,7 +52,7 @@ color 06
 powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
 @Echo Off
-@echo.For download ~600kb and install
+@echo.For innounp download ~600kb and install
 pause
 @echo Please wait for download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
 @echo and unpack it to /utils
@@ -65,7 +65,7 @@ DEL innounp-2.zip /S /Q
 color fc
 @echo.Download and install are not support by current powershell version:
     powershell -command "(Get-Host).Version.ToString()"
-@echo.Download ~600kb it manually from  https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
+@echo.Download innounp manually and unpack to utils from:  https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
 pause
 )
 goto :check
@@ -78,7 +78,7 @@ color 0e
 powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
 @Echo Off
-@echo.For download ~60kb and install
+@echo.For wtee download ~60kb and install
 pause
 @echo Please wait for download https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe
 @echo and move to /utils
@@ -88,7 +88,7 @@ powershell -command "Move-Item -Path wtee.exe -Destination utils"
 color fc
 @echo.Download and install are not support by current powershell version:
     powershell -command "(Get-Host).Version.ToString()"
-@echo.Download ~60kb it manually from https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe
+@echo.Download wtee manually and unpack to utils from: https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe
 pause
 )
 goto :check
