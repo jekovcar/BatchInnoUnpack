@@ -29,7 +29,7 @@ call set str4=%%str4:tag=%word%%%
 set str5=%ip2%
 call set str5=%%str5:https://github.com/jekovcar/BatchInnoUnpack/releases/tag/BatchInnoUnpack_=%suffix%%%
 
-@Echo Off
+@Echo.------------------------------------
 if not exist "%~dp0utils/innounp.exe" goto :message2
 @echo.Installed InnoUnpacker version :           https://github.com/jrathlev/InnoUnpacker-Windows-GUI
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe').VersionInfo.FileVersion"
@@ -46,7 +46,7 @@ powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/Issfix_icone
 if not exist "%~dp0utils/ifpstools/ifpsdasm.exe" goto :message4
 IF exist "curl.exe" set or_=true
 IF exist "%SystemRoot%\System32\curl.exe" set or_=true
-if defined or_ echo GitHub:IFPSTools%str1%
+if defined or_ echo GitHub:IFPSTools %str1%
 @echo.Installed IFPS disassembler version:       https://github.com/Wack0/IFPSTools.NET/releases
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/ifpstools/ifpsdasm.exe').VersionInfo.FileVersion"
 @echo.
@@ -55,8 +55,7 @@ powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/ifpstools/if
 if not exist "%~dp0utils/disasm.exe" goto :message3
 @echo.Installed ROPS disassembler                https://sourceforge.net/projects/innounp/files/other%20stuff
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/disasm.exe').VersionInfo.FileVersion"
-@echo.
-
+@echo.------------------------------------
 :start
 @echo.
 @echo.Check Update or Overwrite(O) the latest Inno Setup Unpacker/Ifpsdasm(N)?
