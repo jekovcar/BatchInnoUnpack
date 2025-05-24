@@ -31,6 +31,9 @@ call set str5=%%str5:https://github.com/jekovcar/BatchInnoUnpack/releases/tag/Ba
 
 @Echo.------------------------------------
 if not exist "%~dp0utils/innounp.exe" goto :message2
+
+@Echo.GitHub Unpacker Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/jrathlev/InnoUnpacker-Windows-GUI/commits/master").Headers.'Last-Modified'
+for /d %%a in ("utils/innounp.exe") do echo Installed Unpacker date: %%~ta
 @echo.Installed InnoUnpacker version :           https://github.com/jrathlev/InnoUnpacker-Windows-GUI
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe').VersionInfo.FileVersion"
 @echo.
