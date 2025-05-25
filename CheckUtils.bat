@@ -32,7 +32,7 @@ call set str5=%%str5:https://github.com/jekovcar/BatchInnoUnpack/releases/tag/Ba
 @Echo.------------------------------------
 if not exist "%~dp0utils/innounp.exe" goto :message2
 
-@Echo.GitHub Unpacker Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/jrathlev/InnoUnpacker-Windows-GUI/commits/master").Headers.'Last-Modified'
+netsh wlan show interfaces | Findstr /c:"Signal" > NUL && echo GitHub Unpacker Last-Commit: && powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/jrathlev/InnoUnpacker-Windows-GUI/commits/master").Headers.'Last-Modified' || color 09 && Echo ..............OFFLINE............
 for /d %%a in ("utils/innounp.exe") do echo Installed Unpacker date: %%~ta
 @echo.Installed InnoUnpacker version :           https://github.com/jrathlev/InnoUnpacker-Windows-GUI
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe').VersionInfo.FileVersion"
@@ -90,6 +90,8 @@ if %errorlevel% GEQ 5 (
 pause
 @echo Please wait for download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
 @echo and unpack it to /utils
+netsh wlan show interfaces | Findstr /c:"Signal" > NUL && goto message22 || Echo Offline && pause && goto :check
+:message22
 powershell -command "Start-BitsTransfer -Source https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip"
 powershell -command "Expand-Archive innounp-2.zip utils -Force"
 @echo.
@@ -124,6 +126,8 @@ color 0b
 @echo === ifpsdasm.exe miss in utils/ifpstools === (IFPS disassembler writes "CodeSection_ifps.txt")
 @echo.
 :no
+netsh wlan show interfaces | Findstr /c:"Signal" > NUL && goto message44 || Echo Offline && echo.https://github.com/Wack0/IFPSTools.NET/releases/latest && pause && goto :check
+:message44
 @echo.
 powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
