@@ -2,7 +2,7 @@
 #AutoIt3Wrapper_Icon=Unpack.ico
 #AutoIt3Wrapper_UseUpx=y
 #AutoIt3Wrapper_UseX64=n
-#AutoIt3Wrapper_Res_Fileversion=1.0.4
+#AutoIt3Wrapper_Res_Fileversion=1.0.6
 #AutoIt3Wrapper_Res_ProductName=Issfix_iconextr
 #AutoIt3Wrapper_Res_ProductVersion=1.0.0
 #AutoIt3Wrapper_Res_CompanyName=jekovcar
