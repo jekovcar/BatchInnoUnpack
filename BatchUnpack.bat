@@ -56,6 +56,8 @@ if %errorlevel% GEQ 5 (
 pause
 @echo Please wait for download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
 @echo and unpack it to /utils
+netsh wlan show interfaces | Findstr /c:"Signal" > NUL && goto message22 || Echo Offline && pause && goto :check
+:message22
 powershell -command "Start-BitsTransfer -Source https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip"
 powershell -command "Expand-Archive innounp-2.zip utils -Force"
 @echo.
@@ -79,6 +81,8 @@ powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
 @Echo Off
 @echo.For wtee download ~60kb and install
+netsh wlan show interfaces | Findstr /c:"Signal" > NUL && goto message33 || Echo Offline && pause && goto :check
+:message33
 pause
 @echo Please wait for download https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe
 @echo and move to /utils
