@@ -1,5 +1,12 @@
 @Echo Off
-
+@Echo Off&SetLocal EnableExtensions DisableDelayedExpansion
+Set "IntName="&For /F "Tokens=1,2,4" %%G In (
+    '%__APPDIR__%ROUTE.EXE -4 PRINT^|%__APPDIR__%findstr.exe /RC:"0.0.0.0\ *0.0.0.0"'
+) Do (Set "_=%%I"&For /F Tokens^=1-2Delims^=^" %%J In (
+        '%__APPDIR__%cmd.exe /D/V/C "%__APPDIR__%netsh.exe interface IP show config|%__APPDIR__%findstr.exe "\" !_:.=\.!""'
+    ) Do (Call Set "$=%%_%%"&Set "_=%%K"
+        Echo(%%J|%__APPDIR__%find.exe "%%I">NUL&&(Call Set "IntName=%%$%%"&GoTo Next)))
+:Next
 :check
 color 0a
 if not exist "%~dp0utils/innounp.exe" goto :message2
@@ -56,8 +63,7 @@ if %errorlevel% GEQ 5 (
 pause
 @echo Please wait for download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
 @echo and unpack it to /utils
-netsh wlan show interfaces | Findstr /c:"Signal" > NUL && goto message22 || Echo Offline && pause && goto :check
-:message22
+If Not Defined IntName Echo Offline && pause && goto :check
 powershell -command "Start-BitsTransfer -Source https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip"
 powershell -command "Expand-Archive innounp-2.zip utils -Force"
 @echo.
@@ -81,11 +87,10 @@ powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
 @Echo Off
 @echo.For wtee download ~60kb and install
-netsh wlan show interfaces | Findstr /c:"Signal" > NUL && goto message33 || Echo Offline && pause && goto :check
-:message33
 pause
 @echo Please wait for download https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe
 @echo and move to /utils
+If Not Defined IntName Echo Offline && pause && goto :check
 powershell -command "Start-BitsTransfer -Source https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe"
 powershell -command "Move-Item -Path wtee.exe -Destination utils"
 ) else (
