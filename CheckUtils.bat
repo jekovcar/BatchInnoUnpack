@@ -40,10 +40,7 @@ call set str5=%%str5:https://github.com/jekovcar/BatchInnoUnpack/releases/tag/Ba
 @Echo.------------------------------------
 if not exist "%~dp0utils/innounp.exe" goto :message2
 
-If Defined IntName @Echo.GitHub Unpacker Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/jrathlev/InnoUnpacker-Windows-GUI/commits/master").Headers.'Last-Modified'
 If Not Defined IntName color 09 & Echo..............OFFLINE............
-
-for /d %%a in ("utils/innounp.exe") do echo Installed Unpacker date: %%~ta
 @echo.Installed InnoUnpacker version :           https://github.com/jrathlev/InnoUnpacker-Windows-GUI
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe').VersionInfo.FileVersion"
 @echo.
@@ -83,7 +80,11 @@ ECHO.
 GOTO start
 
 :yes
-rundll32 url.dll,FileProtocolHandler https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/
+ECHO.
+for /d %%a in ("utils/innounp.exe") do echo Installed Unpacker date: %%~ta
+If Defined IntName @Echo.GitHub Unpacker Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/jrathlev/InnoUnpacker-Windows-GUI/commits/master").Headers.'Last-Modified' & pause & goto :start
+If Not Defined IntName Echo offline & Echo https://github.com/jrathlev/InnoUnpacker-Windows-GUI & pause & goto :start
+pause
 GOTO over
 
 :message2
@@ -135,7 +136,8 @@ color 0b
 @echo === ifpsdasm.exe miss in utils/ifpstools === (IFPS disassembler writes "CodeSection_ifps.txt")
 @echo.
 :no
-If Not Defined IntName Echo Offline && echo.https://github.com/Wack0/IFPSTools.NET/releases/latest && pause && goto :check
+@echo.
+If Not Defined IntName Echo Offline && echo.https://github.com/Wack0/IFPSTools.NET/releases/latest && pause && goto :start
 @echo.
 powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
