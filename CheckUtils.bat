@@ -84,8 +84,6 @@ ECHO.
 for /d %%a in ("utils/innounp.exe") do echo Installed Unpacker date: %%~ta
 If Defined IntName @Echo.GitHub Unpacker Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/jrathlev/InnoUnpacker-Windows-GUI/commits/master").Headers.'Last-Modified' & pause & goto :start
 If Not Defined IntName Echo offline & Echo https://github.com/jrathlev/InnoUnpacker-Windows-GUI & pause & goto :start
-pause
-GOTO over
 
 :message2
 color 06 
@@ -136,7 +134,9 @@ color 0b
 @echo === ifpsdasm.exe miss in utils/ifpstools === (IFPS disassembler writes "CodeSection_ifps.txt")
 @echo.
 :no
-@echo.
+ECHO.
+for /d %%a in ("utils/ifpstools/ifpsdasm.exe") do echo Installed IFPSDasm date: %%~ta
+If Defined IntName @Echo.GitHub IFPSDasm Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/Wack0/IFPSTools.NET/commits/master").Headers.'Last-Modified' & Echo. & Echo To IFPSDasm Update: & pause
 If Not Defined IntName Echo Offline && echo.https://github.com/Wack0/IFPSTools.NET/releases/latest && pause && goto :start
 @echo.
 powershell "exit $PSVersionTable.PSVersion.Major"
