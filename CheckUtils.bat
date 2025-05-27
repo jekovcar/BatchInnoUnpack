@@ -38,9 +38,9 @@ set str5=%ip2%
 call set str5=%%str5:https://github.com/jekovcar/BatchInnoUnpack/releases/tag/BatchInnoUnpack_=%suffix%%%
 
 @Echo.------------------------------------
+If Not Defined IntName color 09 & Echo..............OFFLINE............
 if not exist "%~dp0utils/innounp.exe" goto :message2
 
-If Not Defined IntName color 09 & Echo..............OFFLINE............
 @echo.Installed InnoUnpacker version :           https://github.com/jrathlev/InnoUnpacker-Windows-GUI
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe').VersionInfo.FileVersion"
 @echo.
@@ -68,13 +68,14 @@ powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/disasm.exe')
 @echo.------------------------------------
 :start
 @echo.
-@echo.Check Update or Overwrite(O) the latest Inno Setup Unpacker/Ifpsdasm(N)?
+@echo.Check Upd(Y), Owrite(O) InnoSetupUnpacker/Ifpsdasm(N), Owrite(I)?
 SET choice=
-SET /p choice=Pls, enter Y/N/O: 
+SET /p choice=Pls, enter Y/N/O/I: 
 IF NOT '%choice%'=='' SET choice=%choice:~0,1%
 IF /i '%choice%'=='Y' GOTO yes
 IF /i '%choice%'=='N' GOTO no
 IF /i '%choice%'=='O' GOTO over
+IF /i '%choice%'=='I' GOTO ifps
 ECHO "%choice%" is not valid
 ECHO.
 GOTO start
@@ -83,11 +84,11 @@ GOTO start
 ECHO.
 for /d %%a in ("utils/innounp.exe") do echo Installed Unpacker date: %%~ta
 If Defined IntName @Echo.GitHub Unpacker Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/jrathlev/InnoUnpacker-Windows-GUI/commits/master").Headers.'Last-Modified' & pause & goto :start
-If Not Defined IntName Echo offline & Echo https://github.com/jrathlev/InnoUnpacker-Windows-GUI & pause & goto :start
 
 :message2
 color 06 
-@echo. 
+@echo.
+If Not Defined IntName color 09
 @echo === innounp.exe miss in utils ===
 @echo.
 :over
@@ -98,8 +99,8 @@ if %errorlevel% GEQ 5 (
 @echo.For download Inno Setup Unpacker ~600kb and install
 pause
 @echo Please wait for download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
-@echo and unpack it to /utils
-If Not Defined IntName Echo Offline && pause && goto :check
+@echo and unpack in /utils
+If Not Defined IntName Echo Offline && pause && goto :start
 powershell -command "Start-BitsTransfer -Source https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip"
 powershell -command "Expand-Archive innounp-2.zip utils -Force"
 @echo.
@@ -128,16 +129,18 @@ pause
 @echo.
 goto :start
 
+:no
+ECHO.
+for /d %%a in ("utils/ifpstools/ifpsdasm.exe") do echo Installed IFPSDasm date: %%~ta
+If Defined IntName @Echo.GitHub IFPSDasm Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/Wack0/IFPSTools.NET/commits/master").Headers.'Last-Modified' & pause & goto :start
+
 :message4
 color 0b
 @echo. 
 @echo === ifpsdasm.exe miss in utils/ifpstools === (IFPS disassembler writes "CodeSection_ifps.txt")
-@echo.
-:no
-ECHO.
-for /d %%a in ("utils/ifpstools/ifpsdasm.exe") do echo Installed IFPSDasm date: %%~ta
-If Defined IntName @Echo.GitHub IFPSDasm Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/Wack0/IFPSTools.NET/commits/master").Headers.'Last-Modified' & Echo. & Echo To IFPSDasm Update: & pause
-If Not Defined IntName Echo Offline && echo.https://github.com/Wack0/IFPSTools.NET/releases/latest && pause && goto :start
+echo.
+:ifps
+If Not Defined IntName Echo Offline && echo For download IFPS disassembler ~530kb and unpack in utils/ifpstools && echo.https://github.com/Wack0/IFPSTools.NET/releases/latest && pause && goto :start
 @echo.
 powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
@@ -156,6 +159,7 @@ goto :check
 )
 @Echo Off
 @echo.For download IFPS disassembler ~530kb and install
+
 echo %str2%
 pause
 @echo Please wait for download %str2%
