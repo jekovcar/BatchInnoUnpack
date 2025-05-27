@@ -53,7 +53,8 @@ goto :check
 
 :message2
 color 06
-@echo. 
+@echo.
+If Not Defined IntName color 09 
 @echo === innounp.exe miss in utils ===
 @echo.
 powershell "exit $PSVersionTable.PSVersion.Major"
@@ -80,6 +81,7 @@ goto :check
 
 :message3
 color 0e
+If Not Defined IntName color 09
 @echo. 
 @echo === wtee.exe miss in utils === (wtee writes logfile) 
 @echo.
