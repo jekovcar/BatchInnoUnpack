@@ -47,7 +47,7 @@ powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe'
 
 IF exist "curl.exe" set or_=true
 IF exist "%SystemRoot%\System32\curl.exe" set or_=true
-if defined or_ echo GitHub:v%str5%
+if defined or_ echo GitHub:%str5%
 @echo.Installed InnoIssFixIconExtract :          https://github.com/jekovcar/BatchInnoUnpack/releases
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/Issfix_iconextr.exe').VersionInfo.FileVersion"
 @echo.
