@@ -150,9 +150,8 @@ IF not exist "curl.exe" (
 
 @echo.
 @echo.Not exist curl to define and autoinstall the latest IFPS disassembler.
-@echo.Download and unpack manually binary curl.exe nearby to CheckUtils from:
+@echo.Download Curl ~7.7Mb and unpack manually the binary 'curl.exe' nearby to CheckUtils from: https://curl.se/windows/latest.cgi?p=win32-mingw.zip
 @echo.
-@echo.https://curl.se/windows/dl-8.13.0_4/curl-8.13.0_4-win32-mingw.zip
 pause
 goto :check
    )
