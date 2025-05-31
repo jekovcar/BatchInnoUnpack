@@ -68,16 +68,29 @@ powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/disasm.exe')
 @echo.------------------------------------
 :start
 @echo.
-@echo.Check Upd(Y), Owrite(O) InnoSetupUnpacker/Ifpsdasm(N), Owrite(I)?
+@echo.Check Upd(Y),Owrite(O) InnoSetupUnpacker/Ifpsdasm(N),Owrite(I)/LastInnoSetup(L)?
 SET choice=
-SET /p choice=Pls, enter Y/N/O/I: 
+SET /p choice=Pls, enter Y/N/O/I/L: 
 IF NOT '%choice%'=='' SET choice=%choice:~0,1%
 IF /i '%choice%'=='Y' GOTO yes
 IF /i '%choice%'=='N' GOTO no
 IF /i '%choice%'=='O' GOTO over
 IF /i '%choice%'=='I' GOTO ifps
+IF /i '%choice%'=='L' GOTO last
 ECHO "%choice%" is not valid
 ECHO.
+GOTO start
+
+:last
+"%~dp0utils/innounp.exe" -i
+echo Above are supported InnoSetup Versions by Unpacker
+echo To the index of latest InnoSetup on:    https://files.jrsoftware.org/is/6/
+pause
+IF exist "curl.exe" set or_=true
+IF exist "%SystemRoot%\System32\curl.exe" set or_=true
+if defined or_ curl https://files.jrsoftware.org/is/6/
+if not defined or_ goto curl
+pause
 GOTO start
 
 :yes
@@ -141,6 +154,7 @@ color 0b
 echo.
 :ifps
 If Not Defined IntName Echo Offline && echo For download IFPS disassembler ~530kb and unpack in utils/ifpstools && echo.https://github.com/Wack0/IFPSTools.NET/releases/latest && pause && goto :start
+:curl
 @echo.
 powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
@@ -149,7 +163,7 @@ IF not exist "curl.exe" (
    IF not exist "%SystemRoot%\System32\curl.exe" (
 
 @echo.
-@echo.Not exist curl to define and autoinstall the latest IFPS disassembler.
+@echo.Not exist curl to define and autoinstall.
 @echo.Download Curl ~7.7Mb and unpack manually the binary 'curl.exe' nearby to CheckUtils from: https://curl.se/windows/latest.cgi?p=win32-mingw.zip
 @echo.
 pause
