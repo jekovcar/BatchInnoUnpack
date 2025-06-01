@@ -10,7 +10,6 @@ Set "IntName="&For /F "Tokens=1,2,4" %%G In (
 :check
 color 0a
 if not exist "%~dp0utils/innounp.exe" goto :message2
-if not exist "%~dp0utils/wtee.exe" goto :message3
 set n=0
 for %%a in (*.exe) do set /a n+=1
 IF exist "curl.exe" set /a "n=%n%-1"
@@ -31,7 +30,26 @@ CHOICE /C:AB /D A /T 5 > NUL
         )
     )
 
-@echo.
+:choi
+@echo.Unpacking EXE files with Log / Only Verbose(V) about EXE ?
+SET choice=
+SET /p choice=Pls, ENTER to Unpacking / enter V to verbose:
+IF NOT '%choice%'=='' SET choice=%choice:~0,1%
+IF /i '%choice%'=='V' GOTO verbose
+IF /i '%choice%'=='' GOTO unpack
+ECHO "%choice%" is not valid
+ECHO.    
+:verbose    
+@echo. --- Verbose about EXE files ---
+pause
+for %%f in (*.exe) do (
+IF not "%%f"=="curl.exe" "%~dp0utils/innounp.exe" -v -m -a "%%f"
+IF not "%%f"=="curl.exe" pause
+)
+goto choi
+:unpack
+if not exist "%~dp0utils/wtee.exe" goto :message3
+color 0a
 @echo --- Unpacking EXE files with Log ---
 @echo.
 if exist "%~dp0Unpack_Log.txt" DEL /S /Q "%~dp0Unpack_Log.txt"
@@ -102,4 +120,4 @@ color fc
 @echo.Download wtee manually and unpack to utils from: https://github.com/WinLAFS/wintee/releases/download/v1.0.1/wtee.exe
 pause
 )
-goto :check
+goto :unpack
