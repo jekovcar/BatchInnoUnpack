@@ -31,6 +31,8 @@ CHOICE /C:AB /D A /T 5 > NUL
     )
 
 :choi
+@echo.===========================================
+color 0a
 @echo.Unpacking EXE files with Log / Only Verbose(V) about EXE ?
 SET choice=
 SET /p choice=Pls, ENTER to Unpacking / enter V to verbose:
@@ -39,14 +41,18 @@ IF /i '%choice%'=='V' GOTO verbose
 IF /i '%choice%'=='' GOTO unpack
 ECHO "%choice%" is not valid
 ECHO.    
-:verbose    
+:verbose
+@echo.
+color 79    
 @echo. --- Verbose about EXE files ---
 pause
 for %%f in (*.exe) do (
 IF not "%%f"=="curl.exe" "%~dp0utils/innounp.exe" -v -m -a "%%f"
 IF not "%%f"=="curl.exe" pause
 )
+@echo.
 goto choi
+
 :unpack
 if not exist "%~dp0utils/wtee.exe" goto :message3
 color 0a
