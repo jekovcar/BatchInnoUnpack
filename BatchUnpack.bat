@@ -102,6 +102,13 @@ color 0e
 If Not Defined IntName color 09
 @echo. 
 @echo === wtee.exe miss in utils === (wtee writes logfile) 
+ 
+SET /p choice=Pls, ENTER to Unpacking without log / enter W with log:
+IF NOT '%choice%'=='' SET choice=%choice:~0,1%
+IF /i '%choice%'=='W' GOTO logf
+IF /i '%choice%'=='' GOTO unpw
+ECHO "%choice%" is not valid
+:logf
 @echo.
 powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
@@ -121,3 +128,30 @@ color fc
 pause
 )
 goto :unpack
+:unpw
+if not exist "%~dp0\Output" mkdir "%~dp0\Output"
+for %%f in (*.exe) do (
+IF EXIST "%~dp0\Output\%%f_unpacked" rmdir /S /Q "%~dp0\Output\%%f_unpacked"
+IF EXIST "%~dp0\Output\%%f_icon" rmdir /S /Q "%~dp0\Output\%%f_icon"
+ "%~dp0utils/innounp.exe" -x -m -a -"d%~dp0/%%f_unpack" "%~dp0\%%~nxf"
+IF EXIST "%~dp0%%f_unpack\embedded\CompiledCode.bin" (
+"%~dp0utils/disasm.exe" "%~dp0%%f_unpack\embedded\CompiledCode.bin" "%~dp0%%f_unpack\CodeSection_rops.txt"
+"%~dp0utils/ifpstools/ifpsdasm.exe" "%~dp0%%f_unpack\embedded\CompiledCode.bin"
+move "%~dp0%%f_unpack\embedded\CompiledCode.txt" "%~dp0%%f_unpack\CodeSection_Ifps.txt"
+)
+move "%~dp0%%f_unpack\install_script.iss" "%~dp0"
+move "%~dp0utils\Issfix_iconextr.exe" "%~dp0"
+ "%~dp0Issfix_iconextr.exe"
+move "%~dp0install_script.iss" "%~dp0/%%f_unpack"
+move "%~dp0*.ico" "%~dp0/%%f_unpack"
+
+IF EXIST "%~dp0RegistrySection.txt" move "%~dp0RegistrySection.txt" "%~dp0/%%f_unpack"
+IF EXIST "%~dp0INISection.txt" move "%~dp0INISection.txt" "%~dp0/%%f_unpack"
+ 
+IF EXIST "%~dp0/%%f_unpack\embedded" xcopy /isvy "%~dp0\Languages" "%~dp0/%%f_unpack\embedded"
+move "%~dp0Issfix_iconextr.exe" "%~dp0\utils"
+IF EXIST "%~dp0/%%f_unpack\embedded" move "%~dp0%%f_unpack" "%~dp0\Output\%%f_unpacked"
+IF not EXIST "%~dp0/%%f_unpack\embedded" move "%~dp0%%f_unpack" "%~dp0\Output\%%f_icon"
+IF EXIST "%~dp0\Output\curl.exe_icon" rmdir /S /Q "%~dp0\Output\curl.exe_icon"
+)
+exit
