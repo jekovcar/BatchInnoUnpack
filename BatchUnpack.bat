@@ -33,11 +33,12 @@ CHOICE /C:AB /D A /T 5 > NUL
 :choi
 @echo.===========================================
 color 0a
-@echo.Unpacking EXE files with Log / Only Verbose(V) about EXE ?
+@echo.Unpacking EXE files with Log / Verbose(V) / Check(C) ?
 SET choice=
-SET /p choice=Pls, ENTER to Unpacking / enter V to verbose:
+SET /p choice=Pls, ENTER to unpack/enter V to verbose/enter C to check :
 IF NOT '%choice%'=='' SET choice=%choice:~0,1%
 IF /i '%choice%'=='V' GOTO verbose
+IF /i '%choice%'=='C' GOTO integr
 IF /i '%choice%'=='' GOTO unpack
 ECHO "%choice%" is not valid
 ECHO.    
@@ -48,6 +49,18 @@ color 79
 pause
 for %%f in (*.exe) do (
 IF not "%%f"=="curl.exe" "%~dp0utils/innounp.exe" -v -m -a "%%f"
+IF not "%%f"=="curl.exe" pause
+)
+@echo.
+goto choi
+
+:integr
+@echo.
+color 7d    
+@echo. --- test EXE files for integrity ---
+pause
+for %%f in (*.exe) do (
+IF not "%%f"=="curl.exe" "%~dp0utils/innounp.exe" -t -m -a "%%f"
 IF not "%%f"=="curl.exe" pause
 )
 @echo.
