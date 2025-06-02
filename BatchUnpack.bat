@@ -72,9 +72,11 @@ color 0a
 @echo --- Unpacking EXE files with Log ---
 @echo.
 if exist "%~dp0Unpack_Log.txt" DEL /S /Q "%~dp0Unpack_Log.txt"
+if exist "%~dp0curl.exe" move "%~dp0curl.exe" "%~dp0utils\curl.exe"
 move "%~dp0utils\Unpack" "%~dp0Unpack.cmd" 
 Unpack.cmd | "%~dp0utils/wtee.exe" "%~dp0Unpack_Log.txt"
 move "%~dp0Unpack.cmd" "%~dp0utils\Unpack"
+if exist "%~dp0utils\curl.exe" move "%~dp0utils\curl.exe" "%~dp0curl.exe"
 IF EXIST "%~dp0\Output\curl.exe_icon" rmdir /S /Q "%~dp0\Output\curl.exe_icon"
 exit
 
