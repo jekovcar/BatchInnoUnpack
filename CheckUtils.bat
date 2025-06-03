@@ -97,7 +97,7 @@ GOTO start
 ECHO.
 for /d %%a in ("utils/innounp.exe") do echo Installed Unpacker date: %%~ta
 If Defined IntName @Echo.GitHub Unpacker Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/jrathlev/InnoUnpacker-Windows-GUI/commits/master").Headers.'Last-Modified' & goto offyes
-ECHO Unnable to check offline Last Unpacker.
+ECHO Unable to check offline Last Unpacker.
 :offyes
 pause
 goto :start 
@@ -150,7 +150,7 @@ goto :start
 ECHO.
 for /d %%a in ("utils/ifpstools/ifpsdasm.exe") do echo Installed IFPSDasm date: %%~ta
 If Defined IntName @Echo.GitHub IFPSDasm Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/Wack0/IFPSTools.NET/commits/master").Headers.'Last-Modified' & goto offno
-ECHO Unnable to check offline Last IFPSDasm.
+ECHO Unable to check offline Last IFPSDasm.
 :offno
 pause
 goto :start
