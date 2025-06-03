@@ -96,7 +96,9 @@ GOTO start
 :yes
 ECHO.
 for /d %%a in ("utils/innounp.exe") do echo Installed Unpacker date: %%~ta
-If Defined IntName @Echo.GitHub Unpacker Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/jrathlev/InnoUnpacker-Windows-GUI/commits/master").Headers.'Last-Modified' & pause & goto :start
+If Defined IntName @Echo.GitHub Unpacker Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/jrathlev/InnoUnpacker-Windows-GUI/commits/master").Headers.'Last-Modified'
+pause
+goto :start 
 
 :message2
 color 06 
@@ -145,7 +147,9 @@ goto :start
 :no
 ECHO.
 for /d %%a in ("utils/ifpstools/ifpsdasm.exe") do echo Installed IFPSDasm date: %%~ta
-If Defined IntName @Echo.GitHub IFPSDasm Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/Wack0/IFPSTools.NET/commits/master").Headers.'Last-Modified' & pause & goto :start
+If Defined IntName @Echo.GitHub IFPSDasm Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/Wack0/IFPSTools.NET/commits/master").Headers.'Last-Modified'
+pause
+goto :start
 
 :message4
 color 0b
