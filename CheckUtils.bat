@@ -149,6 +149,8 @@ goto :start
 :no
 ECHO.
 for /d %%a in ("utils/ifpstools/ifpsdasm.exe") do echo Installed IFPSDasm date: %%~ta
+echo Created IFPSDasm date:
+for /F "skip=5 tokens=1,2,4,5* delims= " %%I in ('dir /A:-D /O:-D /T:C "%~dp0utils\ifpstools\ifpsdasm.exe"') do  @echo/%%I  %%J
 If Defined IntName @Echo.GitHub IFPSDasm Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/Wack0/IFPSTools.NET/commits/master").Headers.'Last-Modified' & goto offno
 ECHO Unable to check offline Last IFPSDasm.
 :offno
