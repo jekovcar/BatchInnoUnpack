@@ -90,7 +90,8 @@ IF exist "curl.exe" set or_=true
 IF exist "%SystemRoot%\System32\curl.exe" set or_=true
 if defined or_ curl https://files.jrsoftware.org/is/6/
 if not defined or_ goto curl
-pause
+echo Crtl+Click to follow link: ---^>^>    https://files.jrsoftware.org/is/6/
+echo Or & pause
 GOTO start
 
 :yes
@@ -125,6 +126,7 @@ powershell -command "Expand-Archive innounp-2.zip utils -Force"
 @echo.
 @echo Downloaded and unpacked "innounp-2.zip" in utils
 DEL innounp-2.zip /S /Q
+powershell "(Get-ChildItem utils\innounp.exe).CreationTime = Get-Date"
 ) else (
 color fc
 @echo.Download and install are not support by current powershell version:
@@ -194,6 +196,7 @@ powershell -command "Expand-Archive %str3% utils/ifpstools -Force"
 @echo.
 @echo Downloaded and unpacked %str3% in utils
 DEL %str3% /S /Q
+powershell "(Get-ChildItem utils\ifpstools\ifpsdasm.exe).CreationTime = Get-Date"
 ) else (
 color fc
 @echo.Download and install are not support by current powershell version:
