@@ -179,7 +179,7 @@ IF not exist "curl.exe" (
 
 @echo.
 @echo.Not exist curl to define and autoinstall.
-@echo.Download Curl ~7.7Mb and unpack manually the binary 'curl.exe' nearby to CheckUtils from: https://curl.se/windows/latest.cgi?p=win32-mingw.zip
+@echo.Download curl-win32-mingw.zip ~7.7Mb and unpack manually the binary 'curl.exe' nearby to CheckUtils from: https://wingetgui.com/apps/cURL-cURL
 @echo.
 pause
 goto :check
