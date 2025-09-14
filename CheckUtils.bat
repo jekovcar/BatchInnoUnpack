@@ -179,9 +179,16 @@ IF not exist "curl.exe" (
 
 @echo.
 @echo.Not exist curl to define and autoinstall.
-@echo.Download curl-win32-mingw.zip ~7.7Mb and unpack manually the binary 'curl.exe' nearby to CheckUtils from: https://wingetgui.com/apps/cURL-cURL
+@echo.Download curl-win32-mingw.zip and unpack manually the binary 'curl.exe' nearby to CheckUtils from: https://wingetgui.com/apps/cURL-cURL
 @echo.
+@echo For auto download archive and extract "curl.exe" :
 pause
+powershell -command "Start-BitsTransfer -Source https://skanthak.hier-im-netz.de/download/curl-7.64.1.cab"
+IF NOT EXIST "%~dp0curl" MKDIR "%~dp0curl"
+expand curl-7.64.1.cab -F:* "%~dp0curl"
+move "%~dp0curl\I386\curl.exe" "%~dp0"
+RMDIR /S /Q "curl"
+DEL /S /Q "curl-7.64.1.cab"
 goto :check
    )
 )
