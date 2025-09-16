@@ -178,10 +178,12 @@ IF not exist "curl.exe" (
    IF not exist "%SystemRoot%\System32\curl.exe" (
 
 @echo.
-@echo.Not exist curl to define and autoinstall.
-@echo.Download curl-win32-mingw.zip and unpack manually the binary 'curl.exe' nearby to CheckUtils from: https://wingetgui.com/apps/cURL-cURL
+@echo.Not exist curl needed to define and autoinstall ifps disassembler.
+@echo Download curl-win32-mingw.zip and unpack manually the binary "curl.exe" nearby to CheckUtils from: 
+@echo https://wingetgui.com/apps/cURL-cURL
 @echo.
-@echo For auto download archive and extract "curl.exe" :
+@echo For auto download archive and extract "curl.exe" from:
+@echo https://skanthak.hier-im-netz.de/download/curl-7.64.1.cab
 pause
 powershell -command "Start-BitsTransfer -Source https://skanthak.hier-im-netz.de/download/curl-7.64.1.cab"
 IF NOT EXIST "%~dp0curl" MKDIR "%~dp0curl"
