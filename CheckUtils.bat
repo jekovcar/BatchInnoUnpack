@@ -182,7 +182,7 @@ IF not exist "curl.exe" (
 @echo Download curl-win32-mingw.zip and unpack manually the binary "curl.exe" nearby to CheckUtils from: 
 @echo https://wingetgui.com/apps/cURL-cURL
 @echo.
-@echo For auto download archive and extract "curl.exe" from:
+@echo For auto download ~777kb and extract "curl.exe" from:
 @echo https://skanthak.hier-im-netz.de/download/curl-7.64.1.cab
 pause
 powershell -command "Start-BitsTransfer -Source https://skanthak.hier-im-netz.de/download/curl-7.64.1.cab"
