@@ -57,7 +57,9 @@ if not exist "%~dp0utils/ifpstools/ifpsdasm.exe" goto :message4
 IF exist "curl.exe" set or_=true
 IF exist "%SystemRoot%\System32\curl.exe" set or_=true
 if defined or_ echo GitHub:IFPSTools %str1%
-@echo.Installed IFPS disassembler version:       https://github.com/Wack0/IFPSTools.NET/releases
+IF exist "%~dp0utils\ifpstools\*.installed" for /f "delims=" %%i in ('dir /b /a-d "%~dp0utils\ifpstools\*.installed"') do set "result=%%i"
+IF exist "%~dp0utils\ifpstools\*.installed" echo %result%                 
+@echo.IFPSTools with IFPS disassembler:          https://github.com/Wack0/IFPSTools.NET/releases
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/ifpstools/ifpsdasm.exe').VersionInfo.FileVersion"
 @echo.
 
@@ -205,6 +207,8 @@ powershell -command "Start-BitsTransfer -Source %str2%"
 powershell -command "Expand-Archive %str3% utils/ifpstools -Force"
 @echo.
 @echo Downloaded and unpacked %str3% in utils
+IF exist "%~dp0utils\ifpstools\*.installed" DEL "%~dp0utils\ifpstools\*.installed" /S /Q
+echo > "%~dp0utils/ifpstools/%str1%.installed"
 DEL %str3% /S /Q
 @echo Set CurrentDate to File CrationDate
 powershell "(Get-ChildItem utils\ifpstools\ifpsdasm.exe).CreationTime = Get-Date"
