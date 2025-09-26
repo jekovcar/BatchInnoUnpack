@@ -41,7 +41,7 @@ call set str5=%%str5:https://github.com/jekovcar/BatchInnoUnpack/releases/tag/Ba
 If Not Defined IntName color 09 & Echo..............OFFLINE............
 if not exist "%~dp0utils/innounp.exe" goto :message2
 
-@echo.Installed InnoUnpacker version :           https://github.com/jrathlev/InnoUnpacker-Windows-GUI
+@echo.Installed InnoUnpacker version :           https://github.com/jrathlev/InnoUnpacker-Windows-GUI/tree/master/innounp-2
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/innounp.exe').VersionInfo.FileVersion"
 @echo.
 
