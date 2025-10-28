@@ -37,7 +37,6 @@ call set str4=%%str4:tag=%word%%%
 set str5=%ip2%
 call set str5=%%str5:https://github.com/jekovcar/BatchInnoUnpack/releases/tag/BatchInnoUnpack_=%suffix%%%
 
-@Echo.------------------------------------
 If Not Defined IntName color 09 & Echo..............OFFLINE............
 if not exist "%~dp0utils/innounp.exe" goto :message2
 
@@ -67,9 +66,10 @@ powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/ifpstools/if
 if not exist "%~dp0utils/disasm.exe" goto :message3
 @echo.Installed ROPS disassembler                https://sourceforge.net/projects/innounp/files/other%20stuff
 powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/disasm.exe').VersionInfo.FileVersion"
-@echo.------------------------------------
+
 :start
 @echo.
+powershell write-host -fore darkyellow -------------------------------------------------------------------------------
 @echo.Check Upd(Y),Owrite(O) InnoSetupUnpacker/Ifpsdasm(N),Owrite(I)/LastInnoSetup(L)?
 SET choice=
 SET /p choice=Pls, enter Y/N/O/I/L: 
@@ -85,15 +85,19 @@ GOTO start
 
 :last
 "%~dp0utils/innounp.exe" -i
-echo Above are supported InnoSetup Versions by Unpacker
+powershell write-host -fore yellow Above are supported InnoSetup Versions by Unpacker
 echo To the index of latest InnoSetup on:    https://files.jrsoftware.org/is/6/
 pause
 IF exist "curl.exe" set or_=true
 IF exist "%SystemRoot%\System32\curl.exe" set or_=true
+powershell write-host -fore yellow -------------------Inno-Setup-Stable-------------------
 if defined or_ curl https://files.jrsoftware.org/is/6/
+powershell write-host -fore cyan Crtl+Click to Stable link: ---^>^>    https://files.jrsoftware.org/is/6/
+powershell write-host -fore yellow -------------------Inno-Setup-DEV----------------------
+if defined or_ curl https://files.jrsoftware.org/is/dev/
 if not defined or_ goto curl
-echo Crtl+Click to follow link: ---^>^>    https://files.jrsoftware.org/is/6/
-echo Or & pause
+powershell write-host -fore cyan Crtl+Click to DEV link: ---^>^>    https://files.jrsoftware.org/is/dev/
+
 GOTO start
 
 :yes
