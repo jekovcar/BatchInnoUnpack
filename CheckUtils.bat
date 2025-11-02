@@ -132,7 +132,7 @@ powershell -command "Expand-Archive innounp-2.zip utils -Force"
 @echo.
 @echo Downloaded and unpacked "innounp-2.zip" in utils
 DEL innounp-2.zip /S /Q
-@echo Set CurrentDate to File CrationDate
+@echo Set CurrentDate to File CreationDate
 powershell "(Get-ChildItem utils\innounp.exe).CreationTime = Get-Date"
 ) else (
 color fc
@@ -214,7 +214,7 @@ powershell -command "Expand-Archive %str3% utils/ifpstools -Force"
 IF exist "%~dp0utils\ifpstools\*.installed" DEL "%~dp0utils\ifpstools\*.installed" /S /Q
 echo > "%~dp0utils/ifpstools/%str1%.installed"
 DEL %str3% /S /Q
-@echo Set CurrentDate to File CrationDate
+@echo Set CurrentDate to File CreationDate
 powershell "(Get-ChildItem utils\ifpstools\ifpsdasm.exe).CreationTime = Get-Date"
 ) else (
 color fc
