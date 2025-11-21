@@ -70,20 +70,22 @@ powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/disasm.exe')
 :start
 @echo.
 powershell write-host -fore darkyellow -------------------------------------------------------------------------------
-@echo.Check Upd(Y),Owrite(O) InnoSetupUnpacker/Ifpsdasm(N),Owrite(I)/LastInnoSetup(L)?
+@echo.Check Upd(Y),Owrite(O) InnoSetupUnpacker/Ifpsdasm(N),Owrite(I)/LastInnoSetup(L),Supported(R)?
 SET choice=
-SET /p choice=Pls, enter Y/N/O/I/L: 
+SET /p choice=Pls, enter Y/N/O/I/L/R: 
 IF NOT '%choice%'=='' SET choice=%choice:~0,1%
 IF /i '%choice%'=='Y' GOTO yes
 IF /i '%choice%'=='N' GOTO no
 IF /i '%choice%'=='O' GOTO over
 IF /i '%choice%'=='I' GOTO ifps
 IF /i '%choice%'=='L' GOTO last
+IF /i '%choice%'=='R' GOTO repo
 ECHO "%choice%" is not valid
 ECHO.
 GOTO start
 
-:last
+:repo
+echo.
 "%~dp0utils/innounp.exe" -i
 powershell write-host -fore yellow Above are supported InnoSetup Versions by Unpacker
 echo To the index of latest InnoSetup on:    https://files.jrsoftware.org/is/6/
@@ -97,6 +99,25 @@ powershell write-host -fore yellow -------------------Inno-Setup-DEV------------
 if defined or_ curl https://files.jrsoftware.org/is/dev/
 if not defined or_ goto curl
 powershell write-host -fore cyan Crtl+Click to DEV link: ---^>^>    https://files.jrsoftware.org/is/dev/
+
+GOTO start
+
+:last
+echo.
+IF exist "curl.exe" set or_=true
+IF exist "%SystemRoot%\System32\curl.exe" set or_=true
+powershell write-host -fore green "GitHub latest InnoSetup version :' '" -NoNewline
+if defined or_ for /F %%I in ('curl.exe -sLo /dev/null -w %%{url_effective} https://github.com/jrsoftware/issrc/releases/latest') do set ip=%%I
+set suffix=v
+set str6=%ip%
+call set str6=%%str6:https://github.com/jrsoftware/issrc/releases/tag/is-=%suffix%%%
+powershell write-host -fore cyan %str6%
+if defined or_ for /F %%I in ('powershell "Invoke-RestMethod -uri  https://api.github.com/repos/jrsoftware/issrc/releases/latest | select -ExpandProperty assets | select -expand browser_download_url"') do set exe=%%I
+set word=
+set str7=%exe%
+call set str7=%%str7:.issig=%word%%%
+powershell write-host -fore cyan %str7%
+pause
 
 GOTO start
 
