@@ -1,5 +1,5 @@
 @Echo Off
-
+echo determine:
 :check
 powershell "exit $PSVersionTable.PSVersion.Major"
 if %errorlevel% GEQ 5 (
