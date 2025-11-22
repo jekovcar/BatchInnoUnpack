@@ -70,36 +70,24 @@ powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/disasm.exe')
 :start
 @echo.
 powershell write-host -fore darkyellow -------------------------------------------------------------------------------
-@echo.Check Upd(Y),Owrite(O) InnoSetupUnpacker/Ifpsdasm(N),Owrite(I)/LastInnoSetup(L),Supported(R)?
+@echo.Check Upd(Y),Owrite(O) InnoSetupUnpacker/Ifpsdasm(N),Owrite(I)/LastInnoSetup(L),Supported(P)?
 SET choice=
-SET /p choice=Pls, enter Y/N/O/I/L/R: 
+SET /p choice=Pls, enter Y/N/O/I/L/P: 
 IF NOT '%choice%'=='' SET choice=%choice:~0,1%
 IF /i '%choice%'=='Y' GOTO yes
 IF /i '%choice%'=='N' GOTO no
 IF /i '%choice%'=='O' GOTO over
 IF /i '%choice%'=='I' GOTO ifps
 IF /i '%choice%'=='L' GOTO last
-IF /i '%choice%'=='R' GOTO repo
+IF /i '%choice%'=='P' GOTO supp
 ECHO "%choice%" is not valid
 ECHO.
 GOTO start
 
-:repo
+:supp
 echo.
 "%~dp0utils/innounp.exe" -i
 powershell write-host -fore yellow Above are supported InnoSetup Versions by Unpacker
-echo To the index of latest InnoSetup on:    https://files.jrsoftware.org/is/6/
-pause
-IF exist "curl.exe" set or_=true
-IF exist "%SystemRoot%\System32\curl.exe" set or_=true
-powershell write-host -fore yellow -------------------Inno-Setup-Stable-------------------
-if defined or_ curl https://files.jrsoftware.org/is/6/
-if not defined or_ goto curl
-powershell write-host -fore cyan Crtl+Click to Stable link: ---^>^>    https://files.jrsoftware.org/is/6/
-powershell write-host -fore yellow -------------------Inno-Setup-DEV----------------------
-if defined or_ curl https://files.jrsoftware.org/is/dev/
-if not defined or_ goto curl
-powershell write-host -fore cyan Crtl+Click to DEV link: ---^>^>    https://files.jrsoftware.org/is/dev/
 
 GOTO start
 
@@ -119,6 +107,19 @@ set word=
 set str7=%exe%
 call set str7=%%str7:.issig=%word%%%
 powershell write-host -fore cyan %str7%
+echo.
+echo To the index of latest InnoSetup on:    https://files.jrsoftware.org/is/6/
+pause
+IF exist "curl.exe" set or_=true
+IF exist "%SystemRoot%\System32\curl.exe" set or_=true
+powershell write-host -fore yellow -------------------Inno-Setup-Stable-------------------
+if defined or_ curl https://files.jrsoftware.org/is/6/
+if not defined or_ goto curl
+powershell write-host -fore cyan Crtl+Click to Stable link: ---^>^>    https://files.jrsoftware.org/is/6/
+powershell write-host -fore yellow -------------------Inno-Setup-DEV----------------------
+if defined or_ curl https://files.jrsoftware.org/is/dev/
+if not defined or_ goto curl
+powershell write-host -fore cyan Crtl+Click to DEV link: ---^>^>    https://files.jrsoftware.org/is/dev/
 
 GOTO start
 
