@@ -107,19 +107,12 @@ set word=
 set str7=%exe%
 call set str7=%%str7:.issig=%word%%%
 powershell write-host -fore cyan %str7%
+
+for /F %%I in ('powershell "Invoke-RestMethod -Uri https://api.github.com/repos/jrsoftware/issrc/tags?per_page=3 | %% { $_.name }"') do set pre=%%I
+powershell write-host -fore green "GitHub latest InnoSetup Pre-release :' '" -NoNewline & powershell write-host -fore cyan %pre%
+powershell write-host -fore cyan Crtl+Click to InnoSetup Pre-release: ---^>^>    https://github.com/jrsoftware/issrc/releases/tag/%pre%
+powershell write-host -fore cyan Crtl+Click to ftp index Inno Setup : ---^>^>    https://files.jrsoftware.org/is/6/
 echo.
-echo To the index of latest InnoSetup on:    https://files.jrsoftware.org/is/6/
-pause
-IF exist "curl.exe" set or_=true
-IF exist "%SystemRoot%\System32\curl.exe" set or_=true
-powershell write-host -fore yellow -------------------Inno-Setup-Stable-------------------
-if defined or_ curl https://files.jrsoftware.org/is/6/
-if not defined or_ goto curl
-powershell write-host -fore cyan Crtl+Click to Stable link: ---^>^>    https://files.jrsoftware.org/is/6/
-powershell write-host -fore yellow -------------------Inno-Setup-DEV----------------------
-if defined or_ curl https://files.jrsoftware.org/is/dev/
-if not defined or_ goto curl
-powershell write-host -fore cyan Crtl+Click to DEV link: ---^>^>    https://files.jrsoftware.org/is/dev/
 
 GOTO start
 
