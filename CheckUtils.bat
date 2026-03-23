@@ -108,7 +108,7 @@ set str7=%exe%
 call set str7=%%str7:.issig=%word%%%
 powershell write-host -fore cyan %str7%
 
-for /F %%I in ('powershell "Invoke-RestMethod -Uri https://api.github.com/repos/jrsoftware/issrc/tags?per_page=3 | %% { $_.name }"') do set pre=%%I
+for /F %%I in ('powershell "Invoke-RestMethod -Uri https://api.github.com/repos/jrsoftware/issrc/tags?per_page=2 | %% { $_.name }"') do set pre=%%I
 powershell write-host -fore green "GitHub latest InnoSetup Release :' '" -NoNewline & powershell write-host -fore cyan %pre%
 powershell write-host -fore cyan Crtl+Click to InnoSetup Release: ---^>^>    https://github.com/jrsoftware/issrc/releases/tag/%pre%
 powershell write-host -fore cyan Crtl+Click to ftp index Inno Setup : ---^>^>    https://files.jrsoftware.org/is/6/
