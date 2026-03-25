@@ -110,10 +110,11 @@ powershell write-host -fore cyan %str7%
 
 for /F %%I in ('powershell "Invoke-RestMethod -Uri https://api.github.com/repos/jrsoftware/issrc/tags?per_page=2 | %% { $_.name }"') do set pre2=%%I
 for /F %%I in ('powershell "Invoke-RestMethod -Uri https://api.github.com/repos/jrsoftware/issrc/tags?per_page=3 | %% { $_.name }"') do set pre3=%%I
-powershell write-host -fore green "GitHub latest InnoSetup Releases :' '" -NoNewline & powershell write-host -fore cyan %pre2% ',' %pre3%
-powershell write-host -fore cyan Crtl+Click to %pre2% Release: ---^>^>    https://github.com/jrsoftware/issrc/releases/tag/%pre2%
-powershell write-host -fore cyan Crtl+Click to %pre3% Release: ---^>^>    https://github.com/jrsoftware/issrc/releases/tag/%pre3%
-powershell write-host -fore cyan Crtl+Click to ftp index Inno Setup : ---^>^>    https://files.jrsoftware.org/is/6/
+powershell write-host -fore green "GitHub latest InnoSetup Releases :"
+powershell write-host -fore cyan %pre2% ---^>^>    https://github.com/jrsoftware/issrc/releases/tag/%pre2%
+powershell write-host -fore cyan %pre3% ---^>^>    https://github.com/jrsoftware/issrc/releases/tag/%pre3%
+powershell write-host -fore darkyellow "ftp Inno Setup :' '" -NoNewline
+powershell write-host -fore cyan https://files.jrsoftware.org/is/6/
 echo.
 
 GOTO start
