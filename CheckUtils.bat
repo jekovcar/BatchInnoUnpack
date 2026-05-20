@@ -95,22 +95,18 @@ GOTO start
 echo.
 IF exist "curl.exe" set or_=true
 IF exist "%SystemRoot%\System32\curl.exe" set or_=true
-powershell write-host -fore green "GitHub latest Stable InnoSetup version :' '" -NoNewline
+powershell write-host -fore green "GitHub latest InnoSetup version :' '" -NoNewline
 if defined or_ for /F %%I in ('curl.exe -sLo /dev/null -w %%{url_effective} https://github.com/jrsoftware/issrc/releases/latest') do set ip=%%I
 if not defined or_ goto curl
-set suffix=v
+set suffix=
 set str6=%ip%
 call set str6=%%str6:https://github.com/jrsoftware/issrc/releases/tag/is-=%suffix%%%
-powershell write-host -fore cyan %str6%
-for /F %%I in ('powershell "Invoke-RestMethod -uri  https://api.github.com/repos/jrsoftware/issrc/releases/latest | select -ExpandProperty assets | select -expand browser_download_url"') do set exe=%%I
-set word=
-set str7=%exe%
-call set str7=%%str7:.issig=%word%%%
-powershell write-host -fore cyan %str7%
+powershell write-host -fore cyan v%str6%
+powershell write-host -fore cyan is-%str6% '  ' ---^>^>  %ip%
 
 for /F %%I in ('powershell "Invoke-RestMethod -Uri https://api.github.com/repos/jrsoftware/issrc/tags?per_page=2 | %% { $_.name }"') do set pre2=%%I
 for /F %%I in ('powershell "Invoke-RestMethod -Uri https://api.github.com/repos/jrsoftware/issrc/tags?per_page=3 | %% { $_.name }"') do set pre3=%%I
-powershell write-host -fore green "GitHub latest InnoSetup Releases :"
+powershell write-host -fore green "GitHub last InnoSetup Releases :"
 powershell write-host -fore cyan %pre2% ---^>^>    https://github.com/jrsoftware/issrc/releases/tag/%pre2%
 powershell write-host -fore cyan %pre3% ---^>^>    https://github.com/jrsoftware/issrc/releases/tag/%pre3%
 powershell write-host -fore darkyellow "ftp Inno Setup :' '" -NoNewline
