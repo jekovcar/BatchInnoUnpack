@@ -111,7 +111,6 @@ powershell write-host -fore cyan %pre2% ---^>^>    https://github.com/jrsoftware
 powershell write-host -fore cyan %pre3% ---^>^>    https://github.com/jrsoftware/issrc/releases/tag/%pre3%
 powershell write-host -fore darkyellow "ftp Inno Setup :' '" -NoNewline
 powershell write-host -fore cyan https://files.jrsoftware.org/is/6/
-echo.
 
 GOTO start
 
@@ -180,7 +179,6 @@ for /d %%a in ("utils/ifpstools/ifpsdasm.exe") do echo IFPSDasm Date modified : 
 If Defined IntName @Echo.IFPSDasm GitHub Last-Commit: & powershell -NoLogo -NoProfile -Command (iwr -me HEAD -usebasic "https://api.github.com/repos/Wack0/IFPSTools.NET/commits/master").Headers.'Last-Modified' & goto offno
 ECHO Unable to check offline Last IFPSDasm.
 :offno
-pause
 goto :start
 
 :message4
