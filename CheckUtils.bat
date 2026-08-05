@@ -138,14 +138,14 @@ if %errorlevel% GEQ 5 (
 @Echo Off
 @echo.For download Inno Setup Unpacker ~600kb and install
 pause
-@echo Please wait for download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
+@echo Please wait for download https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin
 @echo and unpack in /utils
 If Not Defined IntName Echo Offline && pause && goto :start
-powershell -command "Start-BitsTransfer -Source https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip"
-powershell -command "Expand-Archive innounp-2.zip utils -Force"
+powershell -command "Start-BitsTransfer -Source https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-270.zip"
+powershell -command "Expand-Archive innounp-270.zip utils -Force"
 @echo.
-@echo Downloaded and unpacked "innounp-2.zip" in utils
-DEL innounp-2.zip /S /Q
+@echo Downloaded and unpacked "innounp-270.zip" in utils
+DEL innounp-270.zip /S /Q
 @echo Set CurrentDate to File CreationDate
 powershell "(Get-ChildItem utils\innounp.exe).CreationTime = Get-Date"
 ) else (
