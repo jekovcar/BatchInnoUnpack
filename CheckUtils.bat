@@ -55,11 +55,9 @@ powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/Issfix_icone
 if not exist "%~dp0utils/ifpstools/ifpsdasm.exe" goto :message4
 IF exist "curl.exe" set or_=true
 IF exist "%SystemRoot%\System32\curl.exe" set or_=true
-if defined or_ echo GitHub:IFPSTools %str1%
+if defined or_ echo GitHub:IFPSTools %str1%                    https://github.com/Wack0/IFPSTools.NET/releases 
 IF exist "%~dp0utils\ifpstools\*.installed" for /f "delims=" %%i in ('dir /b /a-d "%~dp0utils\ifpstools\*.installed"') do set "result=%%i"
-IF exist "%~dp0utils\ifpstools\*.installed" echo %result%                 
-@echo.IFPSTools with IFPS disassembler:          https://github.com/Wack0/IFPSTools.NET/releases
-powershell -NoLogo -NoProfile -Command "(Get-Item -Path '%~dp0utils/ifpstools/ifpsdasm.exe').VersionInfo.FileVersion"
+IF exist "%~dp0utils\ifpstools\*.installed" echo IfpsDasm %result%
 @echo.
 
 @Echo Off
@@ -150,9 +148,9 @@ DEL innounp-270.zip /S /Q
 powershell "(Get-ChildItem utils\innounp.exe).CreationTime = Get-Date"
 ) else (
 color fc
-@echo.Download and install are not support by current powershell version:
+@echo.Download and install are not supported by current powershell version:
     powershell -command "(Get-Host).Version.ToString()"
-@echo.Download Inno Setup Unpacker manuallyand unpack to utils from:  https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-2.zip
+@echo.Download Inno Setup Unpacker manuallyand unpack to utils from:  https://github.com/jrathlev/InnoUnpacker-Windows-GUI/raw/refs/heads/master/innounp-2/bin/innounp-270.zip
 pause
 )
 goto :check
